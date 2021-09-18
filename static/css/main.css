@@ -1,0 +1,56 @@
+main{
+    height: 100%;
+}
+
+#ladding-tax{
+    margin-top: 2em;
+}
+
+main h1{
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+    margin-top: 15%;
+}
+
+main img{
+    width: 500px;
+}
+
+.btn{
+    background-color: white;
+}
+
+.btn:hover{
+    background-color: rgb(158, 159, 158);
+    color: white;
+}
+
+a{
+    color: black;
+    font-size: 30px !important;
+}
+
+#introduction{
+    margin-top: 30px;
+}
+
+#introduction h2{
+    font-size: 100px;
+}
+
+#introduction p{
+    font-size: 25px;
+}
+
+.container-image img{
+    width: 100%;
+}
+
+.top-standard{
+    margin-top: 100px;
+}
+
+.card{
+    background-color: #ffffffcc !important;
+}

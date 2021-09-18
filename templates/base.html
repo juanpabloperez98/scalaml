@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS Boopstrap -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <!-- Index CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% block styles %}
+    {% endblock styles %}
+    <title>Comparativa funcional entre Scala y ML</title>
+</head>
+<body>
+    <header class="mb-3">
+        {% include 'includes/header.html' %}
+    </header>
+
+    {% block content %}
+    {% endblock content %}
+
+
+    <!-- Scripts -->
+    <script src="{% static 'bootstrap/jquery-git.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+</body>
+</html>
