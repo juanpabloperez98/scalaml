@@ -1,18 +1,22 @@
 {% load static %}
-<div class="max-with-90 mx-auto">
-    <div class="row mx-auto">
-        <div class="col-lg-4 image-header">
-            <img src="{% static 'images/scalaML.png' %}" alt="">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid max-w-90">
+        <div style="width: 70px;">
+            <a class="navbar-brand" href="/">
+                <img style="width: 100%;" src="{% static 'images/scalaML.png' %}" alt="">
+            </a>
         </div>
-        <div class="col-lg-8">
-            <ul class="nav justify-content-end py-4">
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#ver-modulos" id="ver-modulos">Ver modulos</a>
-                </li> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        Manual de usuario
-                    </a>
+                    <a class="nav-link active" aria-current="page" href="#" id="show_modules">Ver módulos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manual de usuario</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Manual tecnico</a>
@@ -20,4 +24,4 @@
             </ul>
         </div>
     </div>
-</div>
+</nav>
