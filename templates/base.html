@@ -8,12 +8,14 @@
     <!-- CSS Boopstrap -->
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <!-- Index CSS -->
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/headers/header.css' %}">
     <!-- Image ICO -->
-    <link rel="icon" type="image/x-icon" href="{% static 'images/iconos/scalaML.ico' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/iconos/standardML.ico' %}">
+    <!-- Highlight -->
+    <link rel="stylesheet" href="{% static 'css/dark.css' %}">
     {% block styles %}
     {% endblock styles %}
-    <title>Comparativa funcional entre Scala y ML</title>
+    <title>Paradigma Funcional con el lenguaje SML</title>
 </head>
 <body>
     <header class="mb-3">
@@ -25,8 +27,15 @@
 
 
     <!-- Scripts -->
-    <script src="{% static 'bootstrap/jquery-git.min.js' %}"></script>
+    <!-- <script src="{% static 'bootstrap/jquery-git.min.js' %}"></script> -->
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/highlight.pack.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        hljs.highlightAll();
+        hljs.initLineNumbersOnLoad();
+    </script>
     {% block scripts %}
     {% endblock scripts %}
 </body>

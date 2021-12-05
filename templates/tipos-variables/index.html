@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+{% endblock styles %}
+
+
+{% block content %}
+    <main>
+        <div id="target1" class="">
+            <section class="row mx-auto max-90" style="margin-top: 9em;">
+                <div class="col-lg-12">
+                    <h3 class="fw-bolder">Módulo 2: Tipos variables y efectos</h3>
+                </div>
+            </section>
+            <section class="row mx-auto max-90">
+                <div class="col-lg-6 col-12" style="margin-top: 2em;">
+                    <p class="text-start">
+                        La mayoría de los lenguajes de programación conocidos, como C o Java, se basan en un
+                        modelo imperativo de computación. Los programas se conciben como la especificación de
+                        una secuencia de comandos que modifican la memoria del ordenador. Cada paso de ejecución de
+                        paso de ejecución examina el contenido actual de la memoria, realiza un
+                        un cálculo simple, modifica la memoria y continúa con la siguiente instrucción.
+                        instrucción. Los comandos individuales se ejecutan por su efecto en la
+                        memoria (que podemos considerar que incluye tanto la memoria interna y los registros
+                        los registros y los dispositivos de entrada/salida externos). El progreso del cálculo se controla mediante
+                        la evaluación de expresiones, como pruebas booleanas
+                        u operaciones aritméticas, que se ejecutan por su valor. Condicional
+                        Los comandos condicionales se ramifican según el valor de alguna expresión. Muchos lenguajes mantienen una
+                        distinción entre expresiones y comandos, pero
+                        a menudo (en C, por ejemplo) las expresiones también pueden modificar la memoria, por lo que
+                        incluso la evaluación de la expresión tiene un efecto.
+                    </p>
+            
+                </div>
+                <div class="col-lg-5 col-12 content-images">
+                    <img src="{% static 'images/m2/languajes.png' %}" alt="">
+                </div>
+                <div class="col-lg-6 col-12">
+                    <p class="text-start">
+                        La computación en el ML es de una naturaleza algo diferente. El énfasis
+                        en ML es la computación mediante la evaluación de expresión de comandos.
+                        La idea de la computación es una generalización de su experiencia en el álgebra de la escuela
+                        secundaria en la que se le da un polinomio en una variable x y se le pide que calcule su valor
+                        en un valor dado de x. variable x y se le pide que calcule su valor para un valor dado de x.
+                        Procedemos a "enchufar" el valor dado de x, y luego, utilizando las reglas de la aritmética,
+                        determinamos el valor de aritmética, determinar el valor del polinomio.  El modelo de evaluación de la
+                        computación utilizado en ML se basa en la misma idea, pero en lugar de limitarnos a las operaciones
+                        aritméticas sobre los reales, admitimos una variedad más rica variedad de valores y
+                        una variedad más rica de operaciones primitivas sobre ellos
+                    </p>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <p class="text-start">
+                        El modelo de evaluación de la computación goza de varias ventajas sobre
+                        el modelo imperativo más conocido. Debido a su estrecha relación con las
+                        matemáticas, es mucho más fácil desarrollar técnicas matemáticas para
+                        razonamiento sobre el comportamiento de los programas. Estas técnicas son herramientas
+                        importantes para ayudarnos a garantizar que los programas funcionen correctamente sin
+                        tener que recurrir a tediosas pruebas y depuraciones que sólo pueden mostrar la
+                        presencia de errores, nunca su ausencia. Además, proporcionan importantes
+                        herramientas para documentar el razonamiento que ha llevado a la formulación de un
+                        programa, haciendo que el código sea más fácil de entender y mantener.
+                    </p>
+                </div>
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next" data-btn="1">
+                        Siguiente <img class="ml-2" src="{% static 'images/iconos/next.png' %}" alt="">
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <div id="target2" class="desactivate">
+            <section class="row mx-auto max-90" style="margin-top: 9em;">
+                <div class="col-lg-12">
+                    <h3 class="fw-bolder">2.2: El modelo de cálculo ML</h3>
+                </div>
+            </section>
+            <section class="row mx-auto max-90">
+                <div class="col-lg-6 col-12" style="margin-top: 2em;">
+                    <p class="text-start">
+                        La computación en ML consiste en la evaluación de expresiones. Cada expresión
+                        tiene tres características importantes:
+                        <ul>
+                            <li>Puede o no tener un tipo</li>
+                            <li>Puede o no tener un valor</li>
+                            <li>Puede o no engendrar un efecto</li>
+                        </ul>
+                        Estas características son todo lo que necesitas saber para calcular con una
+                        expresión. El tipo de una expresión es una descripción del valor que produce, en caso de que
+                        que produce, si es que produce un valor. Por ejemplo, que una expresión tenga el tipo 
+                        <span style="font-weight: bold;">int</span> significa que su valor (si lo tiene) es un número, y que una expresión
+                        tenga el tipo <span style="font-weight: bold;">real</span> 
+                        es decir que su valor (si lo tiene) es un número de coma flotante.
+                    </p>
+            
+                </div>
+                <div class="col-lg-5 col-12 content-images">
+                    <p>
+                        En general podemos pensar en el tipo de una expresión como una 
+                        <span style="font-weight: bold;">"predicción"</span> de
+                        la forma del valor que tiene, en caso de tenerlo. Se requiere que toda expresión
+                        debe tener al menos un tipo; las que lo tienen se dice que están bien <span class="bold-red">tipadas</span>.
+                        Las que no tienen un tipo se denominan <span class="bold-red">"mal tipadas"</span>; se consideran inelegibles
+                        para su evaluación. El comprobador de tipos determina si una expresión
+                        está bien tipada, rechazando con un error las que no lo están.
+                        Una expresión bien tipificada se evalúa para determinar su valor, si es que
+                        tiene uno. Una expresión puede no tener un valor porque su evaluación
+                        nunca termine o porque genere una excepción, ya sea por un fallo en tiempo de ejecución como la división por cero o 
+                        porque alguna condición definida por el programador
+                        definida por el programador durante su evaluación. Si una expresión tiene un valor,
+                        la forma de ese valor se predice por su tipo. Por ejemplo, si una expresión se evalúa con un valor v y su tipo es bool, 
+                        entonces v debe ser verdadero o falso; no puede ser, por ejemplo, 17 o 3,14. 
+                        La solidez del sistema de tipos garantiza la exactitud de las predicciones realizadas por el verificador de tipos.
+                    </p>
+                </div>
+                <div class="col-lg-12 col-12">
+                    <p class="text-start">
+                        La evaluación de una expresión también puede generar un efecto. Los efectos incluyen fenómenos como el lanzamiento de una excepción, 
+                        la modificación de la memoria, la realización de una entrada o una salida, o el envío de un mensaje en la red. 
+                        Es importante señalar que el tipo de una expresión no dice nada sobre sus posibles
+                        efectos. Una expresión de tipo int podría mostrar un mensaje en la pantalla antes de devolver un valor entero. 
+                        Esta posibilidad no se tiene en cuenta en el tipo de la expresión, que sólo clasifica su valor.
+                        Por esta razón, los efectos se denominan a veces efectos secundarios, para subrayar que ocurren
+                        "fuera del lado" durante la evaluación, y no son parte del valor de la
+                        expresión. Ignoraremos los efectos por el momento
+                        asumiremos que todas las expresiones están libres de efectos, o son puras.
+                    </p>
+                </div>
+                <!-- <div class="col-lg-6 col-12">
+                    <p class="text-start">
+                        El modelo de evaluación de la computación goza de varias ventajas sobre
+                        el modelo imperativo más conocido. Debido a su estrecha relación con las
+                        matemáticas, es mucho más fácil desarrollar técnicas matemáticas para
+                        razonamiento sobre el comportamiento de los programas. Estas técnicas son herramientas
+                        importantes para ayudarnos a garantizar que los programas funcionen correctamente sin
+                        tener que recurrir a tediosas pruebas y depuraciones que sólo pueden mostrar la
+                        presencia de errores, nunca su ausencia. Además, proporcionan importantes
+                        herramientas para documentar el razonamiento que ha llevado a la formulación de un
+                        programa, haciendo que el código sea más fácil de entender y mantener.
+                    </p>
+                </div> -->
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next" data-btn="2">
+                        Siguiente <img class="ml-2" src="{% static 'images/iconos/next.png' %}" alt="">
+                    </a>
+                </div>
+            </section>
+        </div>
+
+        <div id="target3" class="desactivate">
+            <section class="row mx-auto max-90" style="margin-top: 9em;">
+                <div class="col-lg-12">
+                    <h3 class="fw-bolder">2.2.1: Comprobación del tipo</h3>
+                </div>
+            </section>
+            <section class="row mx-auto max-90">
+                <div class="col-lg-6 col-12" style="margin-top: 2em;">
+                    <p class="text-start">
+                        ¿Qué es un tipo? ¿Qué tipos existen? En general, un tipo se define especificando tres cosas:
+                        <ul>
+                            <li>Un nombre para el tipo</li>
+                            <li>Los valores del tipo</li>
+                            <li>Las operaciones que pueden realizarse con los valores del tipo</li>
+                        </ul>
+                        A menudo, la división del trabajo en valores y operaciones no es completamente pero, sin embargo, sirve de guía muy útil para describir los tipos.
+                        Consideremos primero el tipo de los enteros. Su nombre es <span style="font-weight: bold;">int</span>. Los valores
+                        del tipo <span style="font-weight: bold;">int</span> son los números 0, 1, ˜1, 2, ˜2, y así sucesivamente. (¡Nótese que los números negativos se escriben con un prefijo tilde, en lugar de un signo menos!)
+                        Las operaciones con números enteros incluyen suma, <span style="font-weight: bold;">+</span>, resta, <span style="font-weight: bold;">-</span>, multiplicación,
+                        <span style="font-weight: bold;">*</span>, cociente, <span style="font-weight: bold;">div</span>, y resto, <span style="font-weight: bold;">mod</span>. Las expresiones aritméticas se forman
+                        aritméticas se forman de la manera habitual, por ejemplo, <span style="font-weight: bold;">3*2+6</span>, y se rigen por las
+                        de precedencia. Los paréntesis pueden utilizarse para anular las convenciones de precedencia, al igual que en la práctica matemática ordinaria. Así, la expresión anterior
+                        puede escribirse como <span style="font-weight: bold;">(3*2)+6</span>, pero también podemos escribir
+                        <span style="font-weight: bold;">3*(2+6)</span> para anular las precedencias por defecto.
+                        La formación de expresiones se rige por un conjunto de reglas de tipificación que
+                        definen los tipos de las expresiones en función de los tipos de sus expresiones constitutivas (si las hay). 
+                        Las reglas de tipificación son, en general, bastante intuitivas, ya que
+                        son coherentes con nuestra experiencia en matemáticas y en otros lenguajes de programación. 
+                        En toda su generalidad, las reglas son algo complicadas,
+                        pero nos acercaremos a ellas considerando primero sólo un pequeño fragmento
+                        del lenguaje, construyendo una maquinaria adicional a medida que avancemos.
+                        He aquí algunas expresiones aritméticas sencillas, escritas utilizando la notación infija para las operaciones 
+                        (lo que significa que el operador va entre los argumentos, como es habitual en matemáticas)
+                        <pre>
+                            <code class="language-vb">    3
+    3 + 4
+    4 div 3
+    4 mod 3
+                            </code>
+                        </pre>
+                    </p>
+            
+                </div>
+                <div class="col-lg-5 col-12 content-images">
+                    <p>
+                        Cada una de estas expresiones está bien formada; de hecho, cada una tiene el tipo
+                        <span style="font-weight: bold;">int</span>. Esto se indica mediante una afirmación de tipado de la forma 
+                        <span style="font-weight: bold;">exp : typ</span>, que
+                        afirma que la expresión exp tiene el tipo typ. Se dice que una afirmación de tipado
+                        es válida si la expresión exp tiene efectivamente el tipo <span style="font-weight: bold;">typ</span>. Las siguientes
+                        son todas aserciones de tipado válidas
+                    </p>
+                    <pre>
+                        <code class="language-vb">    3 : int
+    3 + 4 : int
+    4 div 3 : int 
+    4 mod 3 : int
+                        </code>
+                    </pre>
+                    <p>
+                        ¿Por qué son válidas estas afirmaciones tipográficas? En el caso del valor 3, es
+                        es un axioma que los números enteros tienen tipo entero. ¿Y la expresión 3+4? La operación de suma toma dos argumentos, cada uno de los cuales
+                        debe tener el tipo <span style="font-weight: bold;">int</span>. Dado que ambos argumentos tienen de hecho el tipo <span style="font-weight: bold;">int</span>, se deduce que toda la expresión es de tipo <span style="font-weight: bold;">int</span>. Para casos más complejos
+                        razonamos de forma análoga, por ejemplo, deduciendo que (3+4) div (2+3): <span style="font-weight: bold;">int</span> por
+                        observando que (3+4): <span style="font-weight: bold;">int</span> y (2+3): <span style="font-weight: bold;">int</span>.
+                        El razonamiento implicado en la demostración de la validez de una aserción de tipificación puede resumirse mediante una derivación de tipificación que consiste en una secuencia anidada
+                        secuencia de afirmaciones de tipificación, cada una de ellas justificada por un axioma o una regla de tipificación para una operación. Por ejemplo, la validez de la afirmación tipográfica
+                        (3+7) div 5 : <span style="font-weight: bold;">int</span> se justifica por la siguiente derivación
+                        <ol>
+                            <li>
+                                (3 + 5) : <span style="font-weight: bold;">int</span> porque 3 : <span style="font-weight: bold;">int</span> && 7 : <span style="font-weight: bold;">int</span> 
+                            </li>
+                            <li>
+                                5 : <span style="font-weight: bold;">int</span> porque esté es un axioma
+                            </li>
+                            <li>
+                                los argumentos de <span style="font-weight: bold;">div</span> deben ser enteros, y el resultado es un entero
+                            </li>
+                        </ol>
+                    </p>                   
+                </div>
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next" data-btn="3">
+                        Siguiente <img class="ml-2" src="{% static 'images/iconos/next.png' %}" alt="">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('.next').each(function(e){
+            $(this).on('click',function(e){
+                // e.preventDefault()
+                current = "#target"+$(this).attr('data-btn')
+                next = parseInt($(this).attr('data-btn')) + 1
+                next = "#target"+next
+                $(current).addClass('desactivate')
+                $(next).removeClass('desactivate')
+            })
+        })
+    })
+</script>
+{% endblock scripts %}

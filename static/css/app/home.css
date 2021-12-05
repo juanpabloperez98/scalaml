@@ -1,0 +1,22 @@
+.bg-solved{
+    background-color: rgb(219, 216, 216);
+}
+
+.bg-personal-red{
+    background-color: #ff2600;
+    color: white;
+}
+
+.bg-personal-red:hover{
+    background-color: #ee4022;
+    color: white;
+    width: 60%;
+}
+
+.card-body h5{
+    height: 80px;
+}
+
+.card-body h5,.card-body p{
+    text-align: left;
+}

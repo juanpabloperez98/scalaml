@@ -3,229 +3,146 @@
 
 
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" href="{% static 'css/app/home.css' %}">
 {% endblock styles %}
 
 
 {% block content %}
-<main class="max-w-90 mx-auto" id="main">
-    <div class="row mx-auto color-main p-5">
-        <div class="col-6">
-            <img src="{% static 'images/utp.png' %}" style="width: 100%;" alt="">
+<main>
+    <section class="row mx-auto max-90" style="margin-top: 8em;">
+        <div class="col-md-6 text-center">
+            <img src="{% static 'images/home/utp.png' %}" alt="" style="width: 60%;">
         </div>
         <div class="col-6">
-            <h1 class="font-weight-bold">Comparativa funcional entre Scala y MLStandard</h1>
+            <h3 class="font-weight-bold" style="font-size: 23px; margin-bottom: 1em;">Bienvenido a la guía del paradigma
+                funcional con SML</h3>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti vitae aut eaque, laboriosam ea
-                temporibus rerum reprehenderit? Accusantium quae aut sit minima eveniet aperiam illum nam, omnis
-                quibusdam est animi!
+                Este software es desarrollado por la Universidad tecnológica de Pereira,
+                el cual busca poder enseñar el paradigma de programación declarativo funcional mediante
+                el lenguaje de programación StandarML.
+                Se ha escogido este paradigma de programación funcional, debido a que es un
+                paradigma enfocado a la enseñanza de la programación,
+                al igual que muchos otros paradigmas, con el paradigma funcional se puede llegar a
+                lograr construir programas robustos y complejos con el fin de poder solucionar
+                alguna necesidad, entre sus muchas aplicaciones se destacan aplicaciones para técnicas y matemáticas,
+                Inteligencia artificial, compiladores o analizadores, entre otras muchas.
             </p>
         </div>
-        <div class="col-12 mt-5">
-            <a href="#" id="1" class="btn btn-1 d-block w-25 mx-auto btn-start" style="font-size: 25px;">
-                Empezar
-                <img src="{% static 'images/iconos/start.png' %}" class="ms-2" style="width: 30px;" alt="">
-            </a>
+    </section>
+    <section class="bg-solved" style="margin-top: 3em;">
+        <div class="row mx-auto max-90">
+            <div class="col-md-6">
+                <h3 class="text-center mt-5" style="font-size: 23px;">¿Que es SML?</h3>
+                <p>
+                    SML es un lenguaje de programación de tipo seguro que incorpora muchas
+                    ideas innovadoras en el diseño de lenguajes de programación. Es un lenguaje estáticamente tipado
+                    con un sistema de tipos extensible. Soporta la inferencia de tipos polimórficos
+                    que prácticamente elimina la carga de especificar los tipos de las variables y
+                    facilita enormemente la reutilización del código. Proporciona una gestión automática y eficaz del
+                    almacenamiento de las estructuras de datos y las funciones.
+                </p>
+            </div>
+            <div class="col-6 text-center">
+                <h3 class="font-weight-bold mt-5" style="font-size: 23px; margin-bottom: 1em;">¿Qué es la programación
+                    funcional?</h3>
+                <p class="text-start">
+                    El nombre ya lo sugiere: la programación funcional o functional programming se centra en las
+                    funciones. En un programa funcional, todos los elementos pueden entenderse como funciones y el
+                    código puede ejecutarse mediante llamadas de función secuenciales. Por el contrario, no se asignan
+                    valores de forma independiente. Una función se imagina mejor como una variante especial de un
+                    subprograma. Esta es reutilizable y, a diferencia de un procedimiento, devuelve directamente un
+                    resultado.
+                </p>
+            </div>
         </div>
-    </div>
+    </section>
+    <section class="row mx-auto max-90" style="margin-top: 2em;">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-bold" style="font-size: 23px; margin-bottom: 2em;">PUNTOS A TOCAR EN ESTE SOFTWARE
+            </h3>
+            <p class="text-start">
+                Con el objetivo de poder cumplir con los criterios y formatos de evaluación, se menciona a continuación
+                cuales objetivos son los que este software abarca: <br>
+            <ul class="text-start">
+                <li>ROBUSTEZ: Este software cuenta con un manual de usuario y un manual técnico el cual le permite tanto
+                    a la persona que lo va a usar como el que quiere saber como esta desarrollado el mismo tener una
+                    visión clara sobre el software y sus secciones más significativas</li>
+                <li>EXTENDIBILIDAD: A pesar de que este software no cuenta con una facilidad de añadírseles nuevas
+                    características, se cuenta con la documentación adecuada para poder implementar nuevas propiedades
+                </li>
+                <li>MANTENIMIENTO: Se presenta una buena documentación para realizar cambios en el mismo</li>
+                <li>GRADO DE INVENCIÓN O INNOVACIÓN: A pesar de que SML es un lenguaje conocido, es difícil encontrar
+                    tutoriales y ejemplos de este lenguaje de programación, adicional de eso, este software cuenta con
+                    un sistema de ejemplos los cuales muestran el paso a paso de diferentes ejercicios aplicados en el
+                    lenguaje</li>
+            </ul>
+            </p>
+        </div>
+    </section>
+    <section class="bg-solved" style="margin-top: 3em;">
+        <div class="row mx-auto max-90">
+            <div class="col-md-12">
+                <h3 class="text-center mt-5" style="font-size: 23px;">¿Que son los módulos?</h3>
+                <p>
+                    Los módulos son secciones o apartados los cuales se tocan, se explican y se realizan ejercicios y
+                    ejemplos de diferentes temas del lenguaje SML, cada módulo cuenta con ejemplos los cuales tienen un
+                    paso a paso implementado, es de esta manera es como se busca poder que el usuario entienda cada uno
+                    de los temas tocados.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="row mx-auto max-90" style="margin-top: 2em;" id="modulos">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-bold" style="font-size: 23px; margin-bottom: 2em;">Módulos</h3>
+
+            <div class="card" style="width: 18rem; display: inline-block;">
+                <img src="{% static 'images/m1/expresiones_regulares.png' %}" style="width: 100%;height: 200px;"
+                    class="card-img-top" alt="IMAGE">
+                <div class="card-body">
+                    <h5 class="card-title">Introducción: Expresiones regulares y ejemplos de códigos</h5>
+                    <p class="card-text" style="height: 200px;">
+                        En este módulo vamos a mostrar una introducción hacia SML haciendo uso de las expresiones
+                        regulares y el funcionamiento de las mismas dentro de SML
+                    </p>
+                    <a href="{% url 'expresiones_regulares:main' %}" class="btn bg-personal-red">Entrar al módulo</a>
+                </div>
+            </div>
+            <div class="card mx-5" style="width: 18rem; display: inline-block;">
+                <img src="{% static 'images/m2/variable.png' %}" style="width: 100%;height: 200px;" class="card-img-top"
+                    alt="IMAGE">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Tipos, valores y efectos</h5>
+                    <p class="card-text" style="height: 200px;">
+                        SML se divide en varias partes donde una de 
+                        las partes principales es el núcleo del lenguaje, el cual comprende las construcciones 
+                        de programación fundamentales a continuación en este módulo se explicara más a detalle. 
+                    </p>
+                    <a href="{% url 'tipos_variables:main' %}" class="btn bg-personal-red">Entrar al módulo</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; display: inline-block;">
+                <img src="{% static 'images/m3/declaraciones.png' %}" style="width: 100%;height: 200px;"
+                    class="card-img-top" alt="IMAGE">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Declaraciones</h5>
+                    <p class="card-text" style="height: 200px;">
+                        Lorem ipsum dolor sit,
+                        amet consectetur adipisicing elit.
+                        Fugit cum asperiores mollitia harum a laudantium fugiat,
+                        dolore saepe, eligendi qui quia quos molestias quisquam laborum.
+                        Cum ducimus quod libero totam!
+                    </p>
+                    <a href="#" class="btn bg-personal-red">Entrar al módulo</a>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
-<section id="section-scala" class="max-w-90 mx-auto desactivate">
-    <div class="row mx-auto color-main p-5">
-        <div class="col-12">
-            <h2 class="text-center">¿Qué es Scala?</h2>
-        </div>
-        <div class="col-6">
-            <img src="{% static 'images/scala.png' %}" style="width: 100%;" alt="">
-        </div>
-        <div class="col-6 mt-5">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam, nemo nisi, molestiae recusandae
-                nesciunt eum modi deleniti expedita optio aliquam aspernatur impedit, molestias numquam animi dolor
-                maxime ab beatae?
-            </p>
-        </div>
-        <div class="col-12">
-            <a href="#" id="2" class="btn btn-1 d-block w-25 mx-auto btn-start" style="font-size: 25px;">
-                Siguiente
-                <img src="{% static 'images/iconos/next.png' %}" class="ms-2" style="width: 30px;" alt="">
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="section-ML" class="max-w-90 mx-auto desactivate">
-    <div class="row mx-auto color-main p-5">
-        <div class="col-12">
-            <h2 class="text-center">¿Qué es ML Standard?</h2>
-        </div>
-        <div class="col-6">
-            <img src="{% static 'images/standardML.png' %}" style="width: 100%;" alt="">
-        </div>
-        <div class="col-6 mt-5">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam, nemo nisi, molestiae recusandae
-                nesciunt eum modi deleniti expedita optio aliquam aspernatur impedit, molestias numquam animi dolor
-                maxime ab beatae?
-            </p>
-        </div>
-        <div class="col-12">
-            <a href="#" id="3" class="btn btn-1 d-block w-25 mx-auto btn-start" style="font-size: 25px;">
-                Siguiente
-                <img src="{% static 'images/iconos/next.png' %}" class="ms-2" style="width: 30px;" alt="">
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="teoria" class="max-w-90 mx-auto desactivate">
-    <div class="row mx-auto color-main p-5">
-        <div class="col-12">
-            <h2 class="text-center">Teoría y módulos</h2>
-        </div>
-        <div class="col-6 my-3">
-            <h4>¿Qué es la teoría?</h4>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam, nemo nisi, molestiae recusandae
-                nesciunt eum modi deleniti expedita optio aliquam aspernatur impedit, molestias numquam animi dolor
-                maxime ab beatae?
-            </p>
-        </div>
-        <div class="col-6 my-3">
-            <h4>¿Que son los módulos?</h4>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ullam, nemo nisi, molestiae recusandae
-                nesciunt eum modi deleniti expedita optio aliquam aspernatur impedit, molestias numquam animi dolor
-                maxime ab beatae?
-            </p>
-        </div>
-        <div class="col-12">
-            <a href="#" id="4" class="btn btn-1 d-block w-25 mx-auto btn-start" style="font-size: 25px;">
-                Siguiente
-                <img src="{% static 'images/iconos/next.png' %}" class="ms-2" style="width: 30px;" alt="">
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="modulos" class="max-w-90 mx-auto desactivate">
-    <div class="row mx-auto color-main p-5">
-        <div class="col-12">
-            <h2 class="text-center font-weight-bold">Módulos</h2>
-        </div>
-        <div class="col-12">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 1</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 2</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 3</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row mt-3">
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 4</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 5</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <img src="{% static 'images/random.png' %}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Módulo 6</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-1">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 {% endblock content %}
 
 {% block scripts %}
 <script>
-    $('#show_modules').on('click', function (e) {
-        e.preventDefault()
-        $('#modulos').toggle('explode')
-        $('#main').toggle('main')
-        $('#show_modules').toggle('explode')
-    })
-    $('.btn-start').each(function () {
-        $(this).on('click', function (e) {
-            e.preventDefault()
-            id = $(this).attr('id')
-            switch (id) {
-                case '1': {
-                    $('#section-scala').toggle('explode')
-                    $('#main').toggle('explode')
-                    $('#show_modules').toggle('explode')
-                    break
-                }
-                case '2': {
-                    $('#section-ML').toggle('explode')
-                    $('#section-scala').toggle('explode')
-                    break
-                }
-                case '3': {
-                    $('#teoria').toggle('explode')
-                    $('#section-ML').toggle('explode')
-                    break
-                }
-                case '4': {
-                    $('#modulos').toggle('explode')
-                    $('#teoria').toggle('explode')
-                    break
-                }
-            }
-        })
-    })
+
 </script>
 {% endblock scripts %}

@@ -1,0 +1,37 @@
+.max-90{
+    width: 90%;
+    margin: auto;
+}
+
+.navbar-brand img{
+    width: 4em;
+}
+
+nav.navbar{
+    border-top: 6px solid #ff2600;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+nav .item-img img{
+    width: 30px;
+} 
+
+nav .item-img a:hover > img{
+    width: 28px;
+}
+
+.bold-red{
+    font-weight: bold;
+    color: #ff2600;
+}
+
+.desactivate{
+    display: none;
+}
+
+/* nav.navbar{
+    border-bottom: 2px solid black;
+} */
