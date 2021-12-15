@@ -1,0 +1,26 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-place-top">
+    <div class="container-fluid max-90">
+        <a class="navbar-brand" href=".">
+            <img src="{% static 'images/standardML.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item item-img">
+                    
+                    {% if page and page == 2 %}
+                        <a class="nav-link" href="{% url 'tipos_variables:main' %}">
+                            <img src="{% static 'images/iconos/return.png' %}" alt="">
+                            Volver
+                        </a>
+                    {% endif %}
+                        
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

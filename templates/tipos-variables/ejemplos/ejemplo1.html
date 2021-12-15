@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'tipos-variables/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 1</h3>
+                <p>
+                    Para entender un poco más sobre SML vamos a crear un programa el cual usted debe escribir bloques de instrucciones con las operaciones matemáticas vistas en el módulo.
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre>
+                    <code class="language-vb">    3 + 4;
+    4 mod 4;
+    10 - 2;
+                    </code>
+                </pre>
+                <a href="#" class="btn btn-danger">Resultado</a>
+            </div>
+            <div class="col-lg-4">
+                <pre>
+                    <code class="language-vb"> if <span style="background-color: grey;">exp</span> then <span style="background-color: grey;">setence1</span> else <span style="background-color: gray;">sentence2</span>
+                    </code>
+                </pre>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+    
+{% endblock scripts %}

@@ -18,9 +18,17 @@
     <title>Paradigma Funcional con el lenguaje SML</title>
 </head>
 <body>
-    <header class="mb-3">
-        {% include 'includes/header.html' %}
-    </header>
+    
+    {% if not example %}
+        <header class="mb-3">
+            {% include 'includes/header.html' %}
+        </header>
+    {% else %}
+        <header class="mb-3">
+            {% include 'includes/header_exercises.html' %}
+        </header>
+    {% endif %}
+        
 
     {% block content %}
     {% endblock content %}

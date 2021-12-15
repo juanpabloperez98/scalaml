@@ -1,0 +1,40 @@
+.wrapper .sidebar{
+    background-color: #cccccc;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+    content: "";
+}
+
+.wrapper .sidebar ul {
+    margin-top: 100px;
+    padding: 20px 30%;
+}
+
+
+
+.wrapper .sidebar ul li{
+    color: black;
+    padding: 20% 0px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    border: none !important;
+
+}
+
+.wrapper .sidebar ul li a{
+    color: black;
+    outline: none;
+}
+
+.wrapper .sidebar ul li a:hover{
+    color: #ff2600;
+}
+
