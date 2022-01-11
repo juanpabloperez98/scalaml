@@ -13,8 +13,16 @@
 
 {% block content %}
 <main>
-    <div id="target1" class="">
+    <div>
         <section class="row mx-auto max-90" style="margin-top: 9em;">
+            <div class="col-lg-2 ms-auto">
+                <a href="#" id="go_to_practice">Ir a la practica</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="target1" class="">
+        <section class="row mx-auto max-90">
             <div class="col-lg-12">
                 <h3 class="fw-bolder">Módulo 2: Tipos variables y efectos</h3>
             </div>
@@ -81,7 +89,7 @@
     </div>
 
     <div id="target2" class="desactivate">
-        <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <section class="row mx-auto max-90">
             <div class="col-lg-12">
                 <h3 class="fw-bolder">2.2: El modelo de cálculo ML</h3>
             </div>
@@ -168,7 +176,7 @@
     </div>
 
     <div id="target3" class="desactivate">
-        <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <section class="row mx-auto max-90">
             <div class="col-lg-12">
                 <h3 class="fw-bolder">2.2.1: Comprobación del tipo</h3>
             </div>
@@ -278,7 +286,7 @@
     </div>
 
     <div id="target4" class="desactivate">
-        <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <section class="row mx-auto max-90">
             <div class="col-lg-12">
                 <h3 class="fw-bolder">2.3: Types Types Types</h3>
             </div>
@@ -355,7 +363,7 @@
     </div>
 
     <div id="target5" class="desactivate">
-        <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <section class="row mx-auto max-90">
             <div class="col-lg-12">
                 <h3 class="fw-bolder text-center">2.4: Práctica</h3>
             </div>
@@ -405,6 +413,17 @@
                 $(current).addClass('desactivate')
                 $(next).removeClass('desactivate')
             })
+        })
+
+        $('#go_to_practice').on('click', function(e){
+            for(var i = 1; i < 5; i ++){
+                target_tag = "#target"+i
+                if(!$(target_tag).hasClass('desactivate')){
+                    $(target_tag).addClass('desactivate')
+                }
+            }
+            $('#target5').removeClass('desactivate')
+            $('#go_to_practice').toggle('explode')
         })
     })
 </script>
