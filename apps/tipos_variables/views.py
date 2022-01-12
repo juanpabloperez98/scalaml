@@ -38,4 +38,13 @@ class tipo_variables_ejemplo3(TemplateView):
         context['num_example'] = 3
         context['page'] = 2
         return context
+
+class ejercicios(TemplateView):
+    template_name = "tipos-variables/practica/practica.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['example'] = True
+        context['page'] = 2
+        return context
     

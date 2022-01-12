@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/ejercicios/ejercicio.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="wrapper">
+    <!-- Top menu -->
+    <div class="sidebar">
+        <!-- Profile -->
+        <ul>
+            <li>
+                <a href="#" style="color: #ff2600;">Ejercicio 1</a>
+            </li>
+            <li>
+                <a href="#">Ejercicio 2</a>
+            </li>
+            <li>
+                <a href="#">Ejercicio 3</a>
+            </li>
+        </ul>
+        <!-- Menu item -->
+    </div>
+</div>
+
+
+<main style="padding: 100px 30px;">
+    <div class="row mx-auto">
+        <div class="col-lg-3" style="content: '';">
+        </div>
+        <div class="col-lg-9" id="exercise1">
+            <h3>Ejercicio 1</h3>
+            <p class="mt-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates aliquid soluta quod magni! Rem
+                doloremque autem repudiandae. Adipisci error accusantium id aperiam asperiores rem repudiandae animi
+                ducimus. Sint, dolores ipsum?
+            </p>
+            <form class="mt-5" id="form1">
+                <label class="container">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis labore perferendis iste ipsam quod eaque ullam eveniet necessitatibus hic expedita quis quasi, accusamus voluptatem magnam vel aliquam laborum eius ipsum!
+                    <input type="radio" checked="checked" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis labore perferendis iste ipsam quod eaque ullam eveniet necessitatibus hic expedita quis quasi, accusamus voluptatem magnam vel aliquam laborum eius ipsum!
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis labore perferendis iste ipsam quod eaque ullam eveniet necessitatibus hic expedita quis quasi, accusamus voluptatem magnam vel aliquam laborum eius ipsum!
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis labore perferendis iste ipsam quod eaque ullam eveniet necessitatibus hic expedita quis quasi, accusamus voluptatem magnam vel aliquam laborum eius ipsum!
+                    <input type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <a href="#" class="btn btn-danger d-block w-25 mt-5 mx-auto">Escoger respuesta</a>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 3
+
+        $('#pass').on('click', (e) => {
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#explain').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click', (e) => {
+            e.preventDefault()
+            id_current = '#pass' + init_pass
+            id_next = '#pass' + (init_pass + 1)
+            id_explain_current = "#code_" + init_pass
+            id_explain_next = "#code_" + (init_pass + 1)
+            init_pass += 1
+            console.log(init_pass);
+            if (init_pass == init_max) {
+                $("#result").toggle('')
+                $("#next").toggle('')
+            }
+            $(id_next).addClass("color_pass")
+            $(id_current).removeClass("color_pass")
+
+            $(id_explain_current).toggle('')
+            $(id_explain_next).toggle('')
+        })
+
+        $('#result').on('click', (e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+        })
+    })
+</script>
+{% endblock scripts %}
