@@ -5,6 +5,7 @@ from django.views.generic import(
     TemplateView
 )
 
+from django.conf import settings
 
 class tipos_variables(TemplateView):
     template_name = "tipos-variables/index.html"
@@ -46,5 +47,6 @@ class ejercicios(TemplateView):
         context = super().get_context_data(**kwargs)
         context['example'] = True
         context['page'] = 2
+        context['redirect_url'] = settings.URL_REDIRECT + "tipos_variables"
         return context
     
