@@ -87,7 +87,7 @@ coverage.xml
 # Jupyter Notebook 
 .ipynb_checkpoints 
 
-# pyenv 
+# pyenv
 .python-version 
 
 # celery 
@@ -135,3 +135,6 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+
+# ENV
