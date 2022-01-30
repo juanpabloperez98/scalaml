@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.home',
     'apps.expresiones_regulares',
-    'apps.tipos_variables'
+    'apps.tipos_variables',
+    'apps.declaraciones'
 ]
 
 MIDDLEWARE = [
