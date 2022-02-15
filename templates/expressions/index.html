@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/app/general.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<main>
+    <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <div class="col-lg-12">
+            <div class="row mx-auto" id="section1">
+                <h3 class="fw-bolder">2.1.1 Expresiones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Cuando estamos en el modo interactivo de ML, la cosa más sencilla de interactuar con ML es crear una expresión, la cual dará como respuesta un valor y un tipo. 
+                        Para entender un poco mejor a continuación un ejemplo de una expresión 
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> 1+2*3;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -20px;" id="codebtn1">
+                        <code style="height: 60px;" class="language-vb"> val it = 7 : int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn1" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Como resultado del ejemplo anterior se puede evidenciar que siempre que se crea una expresión, 
+                        ML dará como respuesta un valor y un tipo, más conocido en inglés como (<span class="font-bold">value</span>,<span class="font-bold">type</span>). 
+                        En el ejemplo anterior la expresión a sido <span class="font-bold">1 + 2 * 3</span>, y ML ha respondido la variable <span class="font-red-bold">it</span> con valor 7 y que el tipo es <span class="font-bold">integer</span>. 
+                        No hay que preocuparse si no se entiende hasta el momento mucho con respecto a los valores y los tipos, más adelante iremos viendo más acerca de ellos.
+                        <br>
+                        <br>
+                        La variable <span class="font-red-bold">it</span> juega un papel importante en ML, esta recibe el valor de cualquier tipo de expresión. Una expresión debe ser seguida de un carácter que determina que ha finalizado o hasta dónde va la expresión el cual es el punto y coma.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="1">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section2">
+                <h3 class="fw-bolder">2.1.2 Constantes</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Como cualquier otro tipo de lenguaje, las expresiones en ML pueden estar compuestas de operadores y operandos los cuales pueden ser variables o constantes. 
+                        Las constantes también tienen un tipo de dato, los cuales veremos a continuación
+                    </p>
+                    <h3 class="font-weight-bold">Integers</h3>
+                    <p>
+                        Los integer (enteros) son representados en ML de la misma manera que en otros lenguajes de programación con la excepción del valor mínimo que puede tener un entero, el cual es cero. 
+                        Un entero es un número de 1 o más dígitos, para representar los valores negativos de un entero es necesario anteponer el símbolo <span class="font-bold">~</span>. Los enteros también pueden ser representados como expresiones hexadecimales, 
+                        donde los caracteres <span class="font-bold">0x</span> o <span class="font-bold">0X</span> seguidos por una cadena de dígitos representan un valor entero positivo. 
+                        A continuación, se muestra un ejemplo de la respuesta de el sistema de ML para alguna expresión hexadecimal
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> 0x1234;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn2">
+                        <code style="height: 60px;" class="language-vb"> val it = 4660 : int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn2" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-4">
+                        Como se ve en el ejemplo, la expresión hexadecimal da como resultado su valor en decimal como entero.
+                    </p>
+                    <h3 class="font-weight-bold mt-5">Reales</h3>
+                    <p>
+                        Los reales son tipos de datos decimales los cuales están representados por uno o más dígitos, 
+                        al igual que los enteros, su representación negativa va acompañada del carácter <span class="font-bold">~</span>. 
+                        Para los números reales se puede representar en notación científica, utilizando el carácter <span class="font-red-bold">e</span> o <span class="font-red-bold">E</span> 
+                        acompañado del <span class="font-bold">~</span> para notación científica hacia la izquierda o sin el símbolo <span class="font-bold">~</span> para 
+                        la notación científica hacia la derecha.
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb">  3E~3;
+  3.14e12
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn3">
+                        <code style="height: 60px;" class="language-vb">  val it = 0.003 : real
+  val it = 3.14E12 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <h3 class="font-weight-bold">Booleanos</h3>
+                    <p>
+                        Los tipos de datos booleanos solamente pueden tomar dos valores <span class="font-bold">True</span> o <span class="font-bold">False</span>, 
+                        ML es case-sensitive es decir que los valores de los tipos booleanos deben ser escritos en minúsculas. 
+                        Un ejemplo a continuación de los tipos de valores booleanos
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> true;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn4">
+                        <code style="height: 60px;" class="language-vb"> val it = true : bool
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <h3 class="font-weight-bold mt-4">Strings</h3>
+                    <p>
+                        Los valores de tipo string son caracteres representados por comillas dobles como “Hola mundo”. 
+                        Caracteres especiales son representados por secuencia de caracteres como en el lenguaje C, 
+                        donde el <span class="font-red-bold">backslash</span> <span class="font-bold">( \ )</span> sirve como un carácter de escape. 
+                        La forma principal para representar caracteres especiales que pueden generar confusión de interpretación para el sistema ML son:
+                        <ul>
+                            <li>La secuencia de dos caracteres acompañado del carácter <span class="font-bold">\n</span> es usada para representar un salto de línea</li>
+                            <li>El carácter <span class="font-bold">\t</span> es usado para hacer tab entre caracteres</li>
+                            <li><span class="font-bold">\\</span> es usado para el carácter backslash</li>
+                        </ul>
+                        Hay otros ciertos secuencia de escape de caracteres que son comúnmente menos usados y que pueden no ser soportados por el sistema de ML A continuación un ejemplo con valores de tipo string.
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> "A\tB\tC\n1\t2\t3\n";
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  A  B  C
+  1  2  3
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section3">
+                <h3 class="fw-bolder">2.1.3 Operadores Artimeticos</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Los operadores aritméticos en ML son similares a los operadores en pascal o C. Existen:
+                        <ul>
+                            <li>Operadores de adición y sustracción <span class="font-bold">+</span> , <span class="font-bold">-</span></li>
+                            <li>Operadores de alta procedencia como los operadores de multiplicación <br> <span class="font-bold">( * )</span>, división <span class="font-bold">( div )</span> o módulo <span class="font-bold">( mod )</span></li>
+                            <li>Operadores de negación <span class="font-bold">~</span></span></li>
+                        </ul>
+                        A continuación, unas expresiones y sus respuestas en el intérprete de ML:
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> 3.0 - 4.5 + 6.7;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb"> val it = 5.2 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Otro ejemplo sería
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> 43 div (8 mod 3) * 5;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn7">
+                        <code style="height: 60px;" class="language-vb"> val it = 105 : int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn7" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p>
+                        Los tres operadores <span class="font-bold">div</span>, <span class="font-bold">mod</span> , y <span class="font-bold">*</span> son de la misma procedencia pero los paréntesis forza a realizar la operación mod primero y usa la notación hacia la izquierda por lo que se agruparía de la forma (43 div 2) * 5 (Donde 2 fue el resultado de la operación 8 <span class="font-bold">mod</span> 3)
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section4">
+                <h3 class="fw-bolder">2.1.4 Operadores de comparación</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        En programación existen 6 operadores de comparación comunes, los cuales son <span class="font-bold">=</span> , <span class="font-bold"><</span> , <span class="font-bold">></span> , <span class="font-bold"><=,</span> <span class="font-bold">=></span>  y <span class="font-bold"><></span>, el cual este ultimo representa la expresión “diferente de”. Podemos usar estos operadores para comparar enteros, reales, caracteres, o strings con una excepción:
+                        <ul>
+                            <li>
+                                Los reales podrían no ser comparados usando <span class="font-bold">=</span> o <span class="font-bold"><></span>. Las otras 4 comparaciones son permitidas 
+                            </li>
+                        </ul>
+                        Veamos algunos ejemplos de comparaciones
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> #"Z" < #"a";
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn8">
+                        <code style="height: 60px;" class="language-vb"> val it = true : bool
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn8" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-4">
+                        Como se puede notar, el resultado de la comparación es un booleano. Esto es porque se esta trabajando con caracteres, por ende, en la jerarquía del código ASCII la Z mayúscula es mayor a la a minúscula.
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Otro ejemplo sería
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> 2 < 1 + 3;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn9">
+                        <code style="height: 60px;" class="language-vb"> val it = true : bool
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn9" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-4">
+                        Aunque el resultado es un booleano, ahora hemos operado con números reales, en la cual decimos que 2 es menor a 1 más 3 que sería igual a 4. Cosa que efectivamente es cierta
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'Antes de empezar a mencionar sobre ML, es recomendable leer el manual de usuario para poder instalar ML en su computador y de esa manera poder llevar a cabo los ejemplos y ejercicios que se desarrollen en los módulos', 
+    //     function(){ }
+    // );
+    let section = 1;
+    $(document).ready(function(){
+        $(".execute-code").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btncode = "#code"+$(this).attr('data-btn')
+                $(btncode).toggle("explode")
+                $(this).toggle("explode")
+            })
+        })
+        $(".next-btn").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btn_current_section = parseInt($(this).attr('data-next'))
+                next_section = "#section"+(btn_current_section + 1);
+                current_section = "#section"+btn_current_section;
+                console.log(next_section);
+                console.log(current_section);
+                $(current_section).addClass("desactivate")
+                $(next_section).removeClass("desactivate")
+            })
+        })
+    })
+</script>
+{% endblock scripts %}

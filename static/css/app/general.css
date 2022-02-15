@@ -1,0 +1,17 @@
+.btn-custom-red{
+    background-color: #f85539;
+    color: white;
+    font-weight: bold;
+}
+
+.desactivate{
+    display: none;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+.font-red-bold{
+    font-weight: bold;
+    color: #f85539;
+}

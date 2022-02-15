@@ -14,9 +14,15 @@
 }
 
 .card-body h5{
-    height: 80px;
+    height: 30px;
 }
 
 .card-body h5,.card-body p{
     text-align: left;
 }
+
+.blood-color{
+    color: #ee4022;
+    font-weight: bold;
+}
+
