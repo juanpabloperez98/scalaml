@@ -18,31 +18,117 @@
     <section class="row mx-auto max-90" style="margin-top: 1em;">
         <div class="col-lg-12">
             <div class="row mx-auto" id="section1">
-                <h3 class="fw-bolder">1.1 Expresiones</h3>
+                <h3 class="fw-bolder">2.1 Tipo de consistencias</h3>
                 <div class="col-lg-6 py-3">
                     <p>
-                        Cuando estamos en el modo interactivo de ML, la cosa más sencilla de interactuar con ML es crear una expresión, la cual dará como respuesta un valor y un tipo. 
-                        Para entender un poco mejor a continuación un ejemplo de una expresión 
+                        Hemos visto algunas de las importantes construcciones de bloques de expresiones. 
+                        Ahora vamos a aprender que salida obtenemos cuando algo sale mal. 
+                        Los operadores también tienen tipos particulares que ellos requieren para operar. 
+                        Ciertos operadores toman operandos de un tipo particular para poder funcionar, por ejemplo, el operador <span class="font-bold">/</span> el cual requiere operandos de tipo 
+                        <span class="font-bold">real</span>, o por ejemplo el operador <span class="font-bold">div</span> que requiere de tipo <span class="font-bold">integer</span>. 
+                        Es por eso que es necesario tener claro los tipos de valores con los que se pueden operar para que no se obtenga un error. 
+                        Para entender mejor veamos acerca de los tipos de errores con los que nos podremos encontrar a trabajar con SML.
+                    </p>
+                    <h4>Tipo de errores</h4>
+                    <p>
+                        Como hemos visto cuando una operación recibe operandos de los tipos adecuados da como resultado una respuesta positiva sin ningún error, 
+                        sin embargo, cuando uno o ambos operandos son de tipo erróneo vamos a obtener un error. 
+                        La naturaleza del error depende de la implementación en particular. 
+                        Por ejemplo, el operador <span class="font-bold">+</span> puede tomar como argumento tanto un entero como un <span class="font-bold">real</span> sin embargo 
+                        ambos operadores deben ser del mismo tipo. Cuando el tipo de los operandos son el mismo, 
+                        entonces el resultado de la operación es del mismo tipo.
                     </p>
                     <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 1+2*3;
+                        <code style="height: 60px;" class="language-vb">  1+2;
+  1.0 + 2.0;
                         </code>
                     </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -20px;" id="codebtn1">
-                        <code style="height: 60px;" class="language-vb"> val it = 7 : int
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn1">
+                        <code style="height: 60px;" class="language-vb">  val it = 3 : int
+  val it = 3.0 : real
                         </code>
                     </pre>
                     <a href="#" data-btn="btn1" class="btn btn-custom-red execute-code">Ejecutar</a>
+
+                    <p class="mt-5">
+                        Por otro lado, cuando los operandos son <span class="font-red-bold">mixtos</span> se va a obtener como respuesta un mensaje de error, esto quiere que los operando son de dos tipos diferentes (como por ejemplo <span class="font-bold">integer</span> y <span class="font-bold">real</span>), veamos lo que responde ML
+                    </p>
+
+                    <pre class="w-75">
+                        <code style="height: 60px;" class="language-vb">  1 + 2.0;
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn2">
+                        <code style="height: 60px;" class="language-vb">  Error: operator and operand dont agree
+    operator domain: int * int
+    operand: int * real 
+    in expression: 
+        + : overloaded ((1 : int), 2.0)
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn2" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        La primera línea de la respuesta indica que el operador espera operandos de otro tipo, 
+                        la siguiente línea dice que el operador <span class="font-bold">+</span> espera un operador cuyo tipo es un par de enteros. 
+                        Aunque el operador <span class="font-bold">+</span> puede aplicarse en cualquiera de los dos casos (<span class="font-bold">enteros</span> o <span class="font-bold">reales</span>), 
+                        si el argumento de la izquierda de la operación es un <span class="font-bold">entero</span>, su operación debe ser con otro argumento de tipo <span class="font-bold">entero</span>, 
+                        esto debido a que ML tomará el tipo del resultado del tipo de sus argumentos. 
+                        La tercera línea de la respuesta muestra que el operando de la operación es un par, donde el argumento a la izquierda del operando es 
+                        de tipo <span class="font-bold">entero</span> y el de la derecha es de tipo <span class="font-bold">real</span>. 
+                        Al final las últimas dos líneas indican la expresión en la cual el error ocurre. 
+                    </p>
                 </div>
                 <div class="col-lg-6 py-3">
                     <p>
-                        Como resultado del ejemplo anterior se puede evidenciar que siempre que se crea una expresión, 
-                        ML dará como respuesta un valor y un tipo, más conocido en inglés como (<span class="font-bold">value</span>,<span class="font-bold">type</span>). 
-                        En el ejemplo anterior la expresión a sido <span class="font-bold">1 + 2 * 3</span>, y ML ha respondido la variable <span class="font-red-bold">it</span> con valor 7 y que el tipo es <span class="font-bold">integer</span>. 
-                        No hay que preocuparse si no se entiende hasta el momento mucho con respecto a los valores y los tipos, más adelante iremos viendo más acerca de ellos.
-                        <br>
-                        <br>
-                        La variable <span class="font-red-bold">it</span> juega un papel importante en ML, esta recibe el valor de cualquier tipo de expresión. Una expresión debe ser seguida de un carácter que determina que ha finalizado o hasta dónde va la expresión el cual es el punto y coma.
+                        Nótese que en el resultado de la operación se menciona el término overloaded al lado del operador <span class="font-bold">+</span>. 
+                        Un operador es <span class="font-red-bold">overladed</span> cuando puede aplicar su operación sobre dos o más argumentos del mismo tipo, como por 
+                        ejemplo <span class="font-bold">-</span> , <span class="font-bold">*</span>, <span class="font-bold"><</span> , entre otros. <br>
+                        Otro típico error que nos podemos encontrar a la hora de programar en ML es la división entre cero. 
+                        El operador <span class="font-bold">/</span> aplica solamente para argumentos de tipo <span class="font-bold">real</span>, 
+                        véase un ejemplo a continuación
+                    </p>
+                    <pre class="w-75">
+                        <code style="height: 60px;" class="language-vb">  1/2;
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn3">
+                        <code style="height: 60px;" class="language-vb">  Error: overloaded variable not defined at type
+    symbol: /
+    type: int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        La primera observación es que el error hace referencia al símbolo <span class="font-bold">/</span> y la aplicación sobre el operando de tipo entero, 
+                        sin embargo por que el mensaje de overloaded en la primera línea del error?... Bien!  
+                        Esto es porque mL piensa que el operador <span class="font-bold">/</span> es una variable. 
+                        Adicionalmente a eso hemos mencionado que dicho operador trabaja y opera solamente con <span class="font-bold">reales</span>. <br>
+                        Otra ocasión en la que podemos encontrar tipo de inconsistencias ocurren cuando manejamos expresiones <span class="font-bold">if - else</span>. La siguiente reglas definen como debería ser formada la expresión:
+                        <ul>
+                            <li>La expresión debe ser seguida de un valor de tipo boolean</li>
+                            <li>Las expresiones que vienen despues de then y del else pueden ser de cualquier tipo, pero deben ser del mismo tipo tanto después del then como después del else</li>
+                        </ul>
+                        A continuación se muestra qué pasa cuando los tipos de expresiones <span class="font-bold">then</span> y <span class="font-bold">else</span> siguen con argumentos de tipos que no concuerdan:
+                    </p>
+                    <pre class="w-75">
+                        <code style="height: 60px;" class="language-vb">  if 1 < 2 then #"a" else "bc";
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn4">
+                        <code style="height: 60px;" class="language-vb">  Error: types of rules dont agree
+    earlier rule(s): bool -> char
+    this rule: bool -> string
+    in rule:
+        false => "bc"
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Con lo que hemos visto hasta el momento es fácil comprender porqué ocurre este error, 
+                        más sin embargo vamos a explicarlo. 
+                        ML nos dice que ha encontrado un argumento de tipo <span class="font-bold">string</span> cuando en realidad espera un argumento de tipo carácter para que 
+                        coincida con el argumento que acompaña la expresión <span class="font-bold">then</span>. 
+                        más adelante veremos cómo poder tratar las expresiones con argumentos de tipos diferentes. 
                     </p>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
@@ -50,97 +136,98 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section2">
-                <h3 class="fw-bolder">1.2 Constantes</h3>
+                <h3 class="fw-bolder">2.2 Conversión entre enteros y reales</h3>
                 <div class="col-lg-6 py-3">
                     <p>
-                        Como cualquier otro tipo de lenguaje, las expresiones en ML pueden estar compuestas de operadores y operandos los cuales pueden ser variables o constantes. 
-                        Las constantes también tienen un tipo de dato, los cuales veremos a continuación
-                    </p>
-                    <h3 class="font-weight-bold">Integers</h3>
-                    <p>
-                        Los integer (enteros) son representados en ML de la misma manera que en otros lenguajes de programación con la excepción del valor mínimo que puede tener un entero, el cual es cero. 
-                        Un entero es un número de 1 o más dígitos, para representar los valores negativos de un entero es necesario anteponer el símbolo <span class="font-bold">~</span>. Los enteros también pueden ser representados como expresiones hexadecimales, 
-                        donde los caracteres <span class="font-bold">0x</span> o <span class="font-bold">0X</span> seguidos por una cadena de dígitos representan un valor entero positivo. 
-                        A continuación, se muestra un ejemplo de la respuesta de el sistema de ML para alguna expresión hexadecimal
+                        Algunas veces tenemos razones por las que debemos convertir un valor de un tipo a un equivalente esto con el fin 
+                        de poder tratar algunos operandos en ciertas operaciones. 
+                        ML provee ciertas funciones incorporadas de conversión para nosotros. 
+                        Quizás el caso más claro es cuando se quiere convertir un entero a un <span class="font-bold">real</span> con el mismo valor. 
+                        La función <span class="font-bold">real</span> nos permite hacer precisamente esto. 
+                        Aplicado para un entero, <span class="font-bold">real</span> produce el valor como: 
                     </p>
                     <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 0x1234;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn2">
-                        <code style="height: 60px;" class="language-vb"> val it = 4660 : int
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn2" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
-                        Como se ve en el ejemplo, la expresión hexadecimal da como resultado su valor en decimal como entero.
-                    </p>
-                    <h3 class="font-weight-bold mt-5">Reales</h3>
-                    <p>
-                        Los reales son tipos de datos decimales los cuales están representados por uno o más dígitos, 
-                        al igual que los enteros, su representación negativa va acompañada del carácter <span class="font-bold">~</span>. 
-                        Para los números reales se puede representar en notación científica, utilizando el carácter <span class="font-red-bold">e</span> o <span class="font-red-bold">E</span> 
-                        acompañado del <span class="font-bold">~</span> para notación científica hacia la izquierda o sin el símbolo <span class="font-bold">~</span> para 
-                        la notación científica hacia la derecha.
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb">  3E~3;
-  3.14e12
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn3">
-                        <code style="height: 60px;" class="language-vb">  val it = 0.003 : real
-  val it = 3.14E12 : real
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
-                </div>
-                <div class="col-lg-6 py-3">
-                    <h3 class="font-weight-bold">Booleanos</h3>
-                    <p>
-                        Los tipos de datos booleanos solamente pueden tomar dos valores <span class="font-bold">True</span> o <span class="font-bold">False</span>, 
-                        ML es case-sensitive es decir que los valores de los tipos booleanos deben ser escritos en minúsculas. 
-                        Un ejemplo a continuación de los tipos de valores booleanos
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> true;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn4">
-                        <code style="height: 60px;" class="language-vb"> val it = true : bool
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <h3 class="font-weight-bold mt-4">Strings</h3>
-                    <p>
-                        Los valores de tipo string son caracteres representados por comillas dobles como “Hola mundo”. 
-                        Caracteres especiales son representados por secuencia de caracteres como en el lenguaje C, 
-                        donde el <span class="font-red-bold">backslash</span> <span class="font-bold">( \ )</span> sirve como un carácter de escape. 
-                        La forma principal para representar caracteres especiales que pueden generar confusión de interpretación para el sistema ML son:
-                        <ul>
-                            <li>La secuencia de dos caracteres acompañado del carácter <span class="font-bold">\n</span> es usada para representar un salto de línea</li>
-                            <li>El carácter <span class="font-bold">\t</span> es usado para hacer tab entre caracteres</li>
-                            <li><span class="font-bold">\\</span> es usado para el carácter backslash</li>
-                        </ul>
-                        Hay otros ciertos secuencia de escape de caracteres que son comúnmente menos usados y que pueden no ser soportados por el sistema de ML A continuación un ejemplo con valores de tipo string.
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> "A\tB\tC\n1\t2\t3\n";
+                        <code style="height: 60px;" class="language-vb">  real(4);
                         </code>
                     </pre>
                     <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn5">
-                        <code style="height: 60px;" class="language-vb">  A  B  C
-  1  2  3
+                        <code style="height: 60px;" class="language-vb">  val it = 4.0 : real
                         </code>
                     </pre>
                     <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p>
+                        Otro ejemplo aplicado a una operación donde se trata de aplicar la suma entre un <span class="font-bold">entero</span> y un <span class="font-bold">real</span> sería:
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> real(1) + 2.0;
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb"> val it = 3.0 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Muestra una correcta versión de esta adición, por supuesto no hay lógica declarar <span class="font-bold">real(1)</span> cuando se podría directamente utilizar el <span class="font-bold">1.0</span>, 
+                        sin embargo el objetivo de la función <span class="font-bold">real</span> es poder transformar valores almacenados en una <span class="font-red-bold">variable</span>. 
+                        Ahora cuando se trata de convertir de <span class="font-bold">real a entero</span>, la cosa varía un poco ya que ML proporciona 4 funciones 
+                        que permiten dicha conversión, los cuales son: <span class="font-red-bold">floor</span>, <span class="font-red-bold">ceil</span>, <span class="font-red-bold">round</span>, y <span class="font-red-bold">trunc</span>.
+                        Cada valor entero producido con el mismo valor real varía dependiendo de la función utilizada. 
+                        Si por ejemplo convertimos el valor 4.3 con la función <span class="font-red-bold">floor</span> nos va a devolver el valor entero inferior, 
+                        a diferencia de la función <span class="font-red-bold">ceil</span> que devolverá el valor entero superior, la función <span class="font-red-bold">round</span> redondea el valor decimal ya sea al valor 
+                        entero superior o inferior dependiendo dependiendo de si es mayor a 4.5 o menor a 4.5 (para este caso específicamente) y 
+                        la función <span class="font-red-bold">trunc</span> borra todos los dígitos decimales de la derecha. Véase un ejemplo en la siguiente tabla
+                    </p>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr class="text-center">
+                            <th scope="col">x</th>
+                            <th scope="col">floor(x)</th>
+                            <th scope="col">ceil(x)</th>
+                            <th scope="col">round(x)</th>
+                            <th scope="col">trunc(x)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-center">
+                            <td>3.5</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>3</td>
+                          </tr>
+                          <tr class="text-center">
+                            <td>~3.5</td>
+                            <td>~4</td>
+                            <td>~3</td>
+                            <td>~3</td>
+                            <td>~3</td>
+                          </tr>
+                          <tr class="text-center">
+                            <td>3.4</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>3</td>
+                            <td>3</td>
+                          </tr>
+                          <tr class="text-center">
+                            <td>~3.6</td>
+                            <td>~4</td>
+                            <td>~3</td>
+                            <td>~4</td>
+                            <td>~3</td>
+                          </tr>
+                        </tbody>
+                      </table>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section3">
-                <h3 class="fw-bolder">1.3 Operadores Artimeticos</h3>
+                <h3 class="fw-bolder">2.1.3 Operadores Artimeticos</h3>
                 <div class="col-lg-6 py-3">
                     <p>
                         Los operadores aritméticos en ML son similares a los operadores en pascal o C. Existen:
@@ -183,7 +270,7 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section4">
-                <h3 class="fw-bolder">1.4 Operadores de comparación</h3>
+                <h3 class="fw-bolder">2.1.4 Operadores de comparación</h3>
                 <div class="col-lg-6 py-3">
                     <p>
                         En programación existen 6 operadores de comparación comunes, los cuales son <span class="font-bold">=</span> , <span class="font-bold"><</span> , <span class="font-bold">></span> , <span class="font-bold"><=,</span> <span class="font-bold">=></span>  y <span class="font-bold"><></span>, el cual este ultimo representa la expresión “diferente de”. Podemos usar estos operadores para comparar enteros, reales, caracteres, o strings con una excepción:
@@ -229,7 +316,7 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section5">
-                <h3 class="fw-bolder">1.5 Combinación lógica de valores</h3>
+                <h3 class="fw-bolder">2.1.5 Combinación lógica de valores</h3>
                 <div class="col-lg-6 py-3">
                     <p>
                         Los operadores comunes de lógica dan como resultado valores booleanos, los conectores son operadores como <span class="font-bold">AND</span>, <span class="font-bold">OR</span> y <span class="font-bold">NOT</span> como los de pascal o <span class="font-bold">&&,</span> <span class="font-bold">||</span> , y <span class="font-bold">!</span> como en C. En ML se manejan valores lógicos de combinatoria llamados <span class="font-red-bold">andalso</span> y <span class="font-red-bold">orelse</span>. 
@@ -270,7 +357,7 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section6">
-                <h3 class="fw-bolder">1.6 Expresión If-Then-Else</h3>
+                <h3 class="fw-bolder">2.1.6 Expresión If-Then-Else</h3>
                 <div class="col-lg-12 py-3">
                     <p>
                         ML nos permite utilizar expresiones condicionales de la forma <span class="font-bold">if</span> E <span class="font-bold">then</span> F <span class="font-bold">else</span> G. Esta expresión lo que garantiza es que se valide si la expresión <span class="font-red-bold">E</span> es verdadera, entonces se ejecutara <span class="font-red-bold">F</span> de lo contrario se ejecutara <span class="font-red-bold">G</span>. Considere la siguiente expresión condicional
