@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'type_consistency/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 2</h3>
+                <p>
+                    Escribir un programa que muestre la palabra “programacion” en sus valores en números por cada letra de la palabra.
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">ord(#"p");</span>
+    <span id="pass2" data-index="2">ord(#"r");</span>
+    <span id="pass3" data-index="3">ord(#"o");</span>
+    <span id="pass4" data-index="4">ord(#"g");</span>
+    <span id="pass5" data-index="5">ord(#"r");</span>
+    <span id="pass6" data-index="6">ord(#"a");</span>
+    <span id="pass7" data-index="7">ord(#"m");</span>
+    <span id="pass8" data-index="8">ord(#"a");</span>
+    <span id="pass9" data-index="9">ord(#"c");</span>
+    <span id="pass10" data-index="10">ord(#"i");</span>
+    <span id="pass11" data-index="11">ord(#"o");</span>
+    <span id="pass12" data-index="12">ord(#"n");</span>
+                </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">El valor de la letra p es 112</span>
+ <span id="code_2" class="desactivate">El valor de la letra r es 114</span>                        
+ <span id="code_3" class="desactivate">El valor de la letra o es 111</span>                        
+ <span id="code_4" class="desactivate">El valor de la letra g es 103</span>
+ <span id="code_5" class="desactivate">El valor de la letra r es 114</span>
+ <span id="code_6" class="desactivate">El valor de la letra a es 97</span>
+ <span id="code_7" class="desactivate">El valor de la letra m es 109</span>
+ <span id="code_8" class="desactivate">El valor de la letra a es 97</span>
+ <span id="code_9" class="desactivate">El valor de la letra c es 99</span>
+ <span id="code_10" class="desactivate">El valor de la letra i es 105</span>
+ <span id="code_11" class="desactivate">El valor de la letra o es 111</span>
+ <span id="code_12" class="desactivate">El valor de la letra n es 110</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 12
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            str = ""
+            str += "val it = 112 : int\t"
+            str += "val it = 114 : int\t"
+            str += "val it = 111 : int\t"
+            str += "val it = 103 : int\t"
+            str += "val it = 114 : int\t"
+            str += "val it = 97 : int\t"
+            str += "val it = 109 : int\t"
+            str += "val it = 97 : int\t"
+            str += "val it = 99 : int\t"
+            str += "val it = 105 : int\t"
+            str += "val it = 111 : int\t"
+            str += "val it = 110 : int\t"
+            return str
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = show_result()
+            $('#resulttag').html(result)
+        })
+    })
+</script>
+{% endblock scripts %}

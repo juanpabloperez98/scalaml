@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'type_consistency/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 1</h3>
+                <p>
+                    Escriba un programa el cual declare 2 variables de tipo reales (los valores que usted considere) y haga la división entera de dicha variables considerando
+                    <ul>
+                        <li>Que la variable 1 debe ser convertida al entero superior</li>
+                        <li>La variable 2 se le deben eliminar los decimales que tengan</li>
+                    </ul>
+                    NOTA: como aún no se ha visto la sección de reglas de entradas y salidas, usted en su código local declare las variables del ejemplo y dele valores estáticos
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">val v1 = valor_ingresado;</span>
+    <span id="pass2" data-index="2">val v2 = valor_ingresado;</span>
+    <span id="pass3" data-index="3">val resultado = ceil(v1) + trunc(v2);</span>
+                </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">Se define la primera variable con el nombre v1</span>
+ <span id="code_2" class="desactivate">Se define la primera variable con el nombre v2</span>                        
+ <span id="code_3" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <h3>Ingrese número</h3>
+                    <input type="text" placeholder="Ingrese un número" id="input_number">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    alertify.alert(
+        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar tres números para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable v1 y v2 de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+        function(){ }
+    );
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 3
+        values = [] 
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+
+            if (init_pass == 2 || init_pass == 3){
+                num_trans = parseFloat($('#input_number').val())
+                if(!isNaN(
+                    num_trans
+                )){
+                    values.push(num_trans)
+                    $('#input_number').val('')
+                    if(init_pass == 3){
+                        $('#input').toggle('explode')
+                    }
+                }else{
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+            }
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            v1 = Math.ceil(values[0])
+            v2 = Math.trunc(values[1])
+            return v1 + v2
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = "val resultado = " + show_result()
+            $('#resulttag').html(result)
+        })
+    })
+</script>
+{% endblock scripts %}

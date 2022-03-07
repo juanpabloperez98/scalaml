@@ -227,159 +227,72 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section3">
-                <h3 class="fw-bolder">2.1.3 Operadores Artimeticos</h3>
+                <h3 class="fw-bolder">2.3  Conversión entre caracteres y enteros</h3>
                 <div class="col-lg-6 py-3">
                     <p>
-                        Los operadores aritméticos en ML son similares a los operadores en pascal o C. Existen:
-                        <ul>
-                            <li>Operadores de adición y sustracción <span class="font-bold">+</span> , <span class="font-bold">-</span></li>
-                            <li>Operadores de alta procedencia como los operadores de multiplicación <br> <span class="font-bold">( * )</span>, división <span class="font-bold">( div )</span> o módulo <span class="font-bold">( mod )</span></li>
-                            <li>Operadores de negación <span class="font-bold">~</span></span></li>
-                        </ul>
-                        A continuación, unas expresiones y sus respuestas en el intérprete de ML:
+                        Se pueden convertir caracteres a enteros en ML utilizando la función <span class="font-bold">ord</span>, 
+                        el resultado de la aplicación de esta función <span class="font-bold">ord</span> para un carácter es su valor entero en la tabla del código ASCII, 
+                        <span class="font-bold">ord</span> va a retornar el código ASCII correspondiente al carácter, véase un ejemplo.
                     </p>
                     <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 3.0 - 4.5 + 6.7;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn6">
-                        <code style="height: 60px;" class="language-vb"> val it = 5.2 : real
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
-                </div>
-                <div class="col-lg-6 py-3">
-                    <p>
-                        Otro ejemplo sería
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 43 div (8 mod 3) * 5;
+                        <code style="height: 60px;" class="language-vb"> ord(#"b") - ord(#"a");
                         </code>
                     </pre>
                     <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn7">
-                        <code style="height: 60px;" class="language-vb"> val it = 105 : int
+                        <code style="height: 60px;" class="language-vb"> val it = 1 : int
                         </code>
                     </pre>
                     <a href="#" data-btn="btn7" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p>
-                        Los tres operadores <span class="font-bold">div</span>, <span class="font-bold">mod</span> , y <span class="font-bold">*</span> son de la misma procedencia pero los paréntesis forza a realizar la operación mod primero y usa la notación hacia la izquierda por lo que se agruparía de la forma (43 div 2) * 5 (Donde 2 fue el resultado de la operación 8 <span class="font-bold">mod</span> 3)
+                    <p class="mt-5">
+                        La letra <span class="font-red-bold">“a”</span> es representada por el número <span class="font-bold">97</span> según el código ASCII y la letra <span class="font-bold">“b”</span> es representada por el número <span class="font-bold">98</span> según el código ASCII, 
+                        es por eso que el resultado de la expresión es igual a 1, debido a la diferencia entre <span class="font-bold">98</span> y <span class="font-bold">97</span>, 
+                        es un ejemplo claro de cómo se maneja la conversión de tipos.
                     </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        De manera similar podemos convertir enteros en un rango de <span class="font-bold">0</span> a <span class="font-bold">255</span> para caracteres. La función <span class="font-red-bold">chr</span> permite hacer esta tarea, véase un ejemplo:
+                    </p>
+                    <pre class="w-50">
+                        <code style="height: 60px;" class="language-vb"> chr(97);
+                        </code>
+                    </pre>
+                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn8">
+                        <code style="height: 60px;" class="language-vb"> val it = "#a" : char
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn8" class="btn btn-custom-red execute-code">Ejecutar</a>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section4">
-                <h3 class="fw-bolder">2.1.4 Operadores de comparación</h3>
-                <div class="col-lg-6 py-3">
+                <h3 class="fw-bolder">2.4 Conversión entre strings y caracteres</h3>
+                <div class="col-lg-12 py-3">
                     <p>
-                        En programación existen 6 operadores de comparación comunes, los cuales son <span class="font-bold">=</span> , <span class="font-bold"><</span> , <span class="font-bold">></span> , <span class="font-bold"><=,</span> <span class="font-bold">=></span>  y <span class="font-bold"><></span>, el cual este ultimo representa la expresión “diferente de”. Podemos usar estos operadores para comparar enteros, reales, caracteres, o strings con una excepción:
-                        <ul>
-                            <li>
-                                Los reales podrían no ser comparados usando <span class="font-bold">=</span> o <span class="font-bold"><></span>. Las otras 4 comparaciones son permitidas 
-                            </li>
-                        </ul>
-                        Veamos algunos ejemplos de comparaciones
+                        Si tenemos un carácter, podemos convertirlo a un <span class="font-red-bold">string</span> de longitud 1 con el operador <span class="font-red-bold">str</span>. 
+                        Entiéndase <span class="font-bold">string como longitud 1</span> aquel <span class="font-red-bold">string</span> cuya cadena de caracteres está compuesta por un solo carácter. 
+                        Véase un ejemplo
                     </p>
                     <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> #"Z" < #"a";
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn8">
-                        <code style="height: 60px;" class="language-vb"> val it = true : bool
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn8" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
-                        Como se puede notar, el resultado de la comparación es un booleano. Esto es porque se esta trabajando con caracteres, por ende, en la jerarquía del código ASCII la Z mayúscula es mayor a la a minúscula.
-                    </p>
-                </div>
-                <div class="col-lg-6 py-3">
-                    <p>
-                        Otro ejemplo sería
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 2 < 1 + 3;
+                        <code style="height: 60px;" class="language-vb"> str(#"a");
                         </code>
                     </pre>
                     <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn9">
-                        <code style="height: 60px;" class="language-vb"> val it = true : bool
+                        <code style="height: 60px;" class="language-vb"> val it = "a" : string
                         </code>
                     </pre>
                     <a href="#" data-btn="btn9" class="btn btn-custom-red execute-code">Ejecutar</a>
                     <p class="mt-4">
-                        Aunque el resultado es un booleano, ahora hemos operado con números reales, en la cual decimos que 2 es menor a 1 más 3 que sería igual a 4. Cosa que efectivamente es cierta
+                        Sin embargo la conversión de strings a caracteres no es posible esto debido a la naturaleza de los tipos de datos string, sin embargo más adelante veremos como se puede convertir un string a una lista de caracteres.
                     </p>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
                 </div>
             </div>
-            <div class="row mx-auto desactivate" id="section5">
-                <h3 class="fw-bolder">2.1.5 Combinación lógica de valores</h3>
-                <div class="col-lg-6 py-3">
-                    <p>
-                        Los operadores comunes de lógica dan como resultado valores booleanos, los conectores son operadores como <span class="font-bold">AND</span>, <span class="font-bold">OR</span> y <span class="font-bold">NOT</span> como los de pascal o <span class="font-bold">&&,</span> <span class="font-bold">||</span> , y <span class="font-bold">!</span> como en C. En ML se manejan valores lógicos de combinatoria llamados <span class="font-red-bold">andalso</span> y <span class="font-red-bold">orelse</span>. 
-                        Como su nombre en inglés indica, esta combinación de operadores determina la manera en como procede una instrucción en ML. A continuación, se explican dichas instrucciones.
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 1 < 2 orelse 3 > 4;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn10">
-                        <code style="height: 60px;" class="language-vb"> val it = true : bool
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn10" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
-                        ML no evalúa la segunda condición en este ejemplo debido a que la primera condición <span class="color-bold">(3 > 4)</span> da como resultado un valor booleano <span class="font-bold">true</span>, dado el caso la primera expresión hubiese dado como resultado un valor <span class="font-bold">false</span>, entraría entonces a la segunda expresión después del <span class="font-red-bold">orelse</span>.
-                    </p>
-                </div>
-                <div class="col-lg-6 py-3">
-                    <p>
-                        Véase también la expresión <span class="font-red-bold">andalso</span>.
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> 1 < 2 andalso 3 > 4;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn11">
-                        <code style="height: 60px;" class="language-vb"> val it = false : bool
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn11" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
-                        En este ejemplo es necesario evaluar ambas condiciones para dar el resultado, es decir, el resultado es false debido a que la segunda condición <span class="font-bold">(3 > 4)</span> es falsa a pesar de que la primera sea verdadera <span class="font-bold">(1 < 2)</span>, por ende, el resultado que arroja ML es un <span class="font-red-bold">false</span>
-                    </p>
-                </div>
-                <div class="col-lg-12 my-5 text-center">
-                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
-                </div>
-            </div>
-            <div class="row mx-auto desactivate" id="section6">
-                <h3 class="fw-bolder">2.1.6 Expresión If-Then-Else</h3>
-                <div class="col-lg-12 py-3">
-                    <p>
-                        ML nos permite utilizar expresiones condicionales de la forma <span class="font-bold">if</span> E <span class="font-bold">then</span> F <span class="font-bold">else</span> G. Esta expresión lo que garantiza es que se valide si la expresión <span class="font-red-bold">E</span> es verdadera, entonces se ejecutara <span class="font-red-bold">F</span> de lo contrario se ejecutara <span class="font-red-bold">G</span>. Considere la siguiente expresión condicional
-                    </p>
-                    <pre class="w-50">
-                        <code style="height: 60px;" class="language-vb"> if 1 < 2 then 3 + 4 else 5 + 6;
-                        </code>
-                    </pre>
-                    <pre class="w-50 desactivate" style="margin-top: -80px;" id="codebtn12">
-                        <code style="height: 60px;" class="language-vb"> val it = 7 : int
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn12" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
-                        El resultado es 7 debido a que la expresión tiene como primera condición <span class="font-bold">(1 < 2)</span>, el cual dicha condición da como resultado un <span class="font-bold">true</span>, este porque efectivamente 1 es menor que 2, como la condición es <span class="font-bold">true</span> entonces entrara al <span class="font-bold">then</span> el cual ejecuta la suma entre 3 y 4 que da como resultado el número 7.
-                    </p>
-                </div>
-                <div class="col-lg-12 my-5 text-center">
-                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
-                </div>
-            </div>
-            <section class="row mx-auto max-90 desactivate" id="section7">
+            <section class="row mx-auto max-90 desactivate" id="section5">
                 <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
                     <div class="card" style="width: 18rem; display: inline-block;">
                         <div class="card-body">
@@ -387,7 +300,7 @@
                             <p class="card-text text-start" style="height: 180px">
                                 A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
                             </p>
-                            <a href="{% url 'expressions:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                            <a href="{% url 'type_consistency:ejemplo1' %}" class="card-link">Vamos a practicar</a>
                         </div>
                     </div>
     
@@ -440,13 +353,13 @@
             })
         })
         $('#go_to_practice').on('click', function(e){
-            for(var i = 1; i < 7; i ++){
+            for(var i = 1; i < 5; i ++){
                 target_tag = "#section"+i
                 if(!$(target_tag).hasClass('desactivate')){
                     $(target_tag).addClass('desactivate')
                 }
             }
-            $('#section7').removeClass('desactivate')
+            $('#section5').removeClass('desactivate')
             $('#go_to_practice').toggle('explode')
         })
     })
