@@ -1,10 +1,6 @@
+from django.conf import settings
 from django.shortcuts import render
-
-
-
-from django.views.generic import(
-    TemplateView
-)
+from django.views.generic import TemplateView
 
 # Create your views here.
 
@@ -29,4 +25,14 @@ class ejemplo2(TemplateView):
         context['example'] = True
         context['num_example'] = 2
         context['page'] = 2
+        return context
+
+class ejercicios(TemplateView):
+    template_name = "type_consistency/practica/practica.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['example'] = True
+        context['page'] = 2
+        context['redirect_url'] = settings.URL_REDIRECT + "type_consistency"
         return context
