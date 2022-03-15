@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.home',
     'apps.expressions',
-    'apps.type_consistency'
+    'apps.type_consistency',
+    'apps.tuples_lists',
 ]
 
 MIDDLEWARE = [

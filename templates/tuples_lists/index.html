@@ -1,0 +1,332 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/app/general.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<main>
+
+    <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <div class="col-lg-2 ms-auto">
+            <a href="#" id="go_to_practice">Ir a la practica</a>
+        </div>
+    </section>
+    <section class="row mx-auto max-90" style="margin-top: 1em;">
+        <div class="col-lg-12">
+            <div class="row mx-auto desactivate" id="section1">
+                <h3 class="fw-bolder">3.1 Tuplas</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Una <span class="font-bold">tupla</span> se forma tomando una lista de dos o más expresiones de cualquier tipo, 
+                        separados por comas y encerradas entre paréntesis. 
+                        En el siguiente ejemplo se le asigna a una variable <span class="font-bold">t</span> una tupla, cuyo primer componente es el entero <span class="font-red-bold">4</span>, 
+                        cuyo segundo componente es el real <span class="font-red-bold">5.0</span> y cuyo tercer componente es un string <span class="font-red-bold">“six”</span>.
+                    </p>
+                    <pre class="w-75">
+                        <code style="height: 60px;" class="language-vb">  val t = (4, 5.0, "six");
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn1">
+                        <code style="height: 60px;" class="language-vb">  val t = (4, 5.0, "six") : int * real * string
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn1" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Tratemos de entender la respuesta de ML. Como se puede observar la respuesta da como resultado los tipos de datos utilizados en las tuplas, 
+                        más sin embargo los retorna de una manera nunca antes vista, la forma 
+                        <span class="font-red-bold">int *  real * string</span> es un producto de tipo. 
+                        Estos valores son tuplas que tienen <span class="font-bold">3 componentes</span>. 
+                        El primer componente es un <span class="font-bold">entero</span>, el segundo un <span class="font-bold">real</span> y el tercero un <span class="font-bold">string</span>. 
+                        El operador <span class="font-bold">*</span> tiene un significado diferente cuando es aplicado a los tipos que cuando son aplicado a los valores. 
+                        Aquí <span class="font-bold">*</span> no está haciendo referencia a una multiplicación, 
+                        sino que indica la formación de una tupla. Para entender mejor las respuestas de las tuplas ver el siguiente ejemplo
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <pre class="w-75">
+                        <code class="language-vb">  (1,2,3,4) es de tipo int * int * int * int
+  (1,(2,3.0)) es de tipo int * (int * real)
+  (1) es de tipo int
+                        </code>
+                    </pre>
+                    <p class="">
+                        En términos generales un producto de tipos está formado desde dos o más tipos <span class="font-bold">T1,T2, . . ., Tk</span> donde estarán acompañados de 
+                        <span class="font-bold">*’</span> que representarán tuplas de <span class="font-red-bold">k</span> elementos. <br>
+
+                        El operador <span class="font-bold">*</span> aplicado para los tipos no es un operador asociativo. 
+                        ¿Qué quiere decir esto?, es decir que no es lo mismo decir <span class="font-red-bold">int * (int * real)</span> que <span class="font-red-bold">(int * int) * real</span>. 
+                        La primera expresión describe una tupla de dos componentes donde el primer componente es un simple entero y el segundo componente es 
+                        otra tupla de un <span class="font-bold">entero</span> y un <span class="font-bold">real</span> y la segunda expresión representa también 
+                        una tupla de dos componentes donde esta vez el primer componente es otra tupla de dos <span class="font-bold">enteros</span> y su segundo componente es un simple 
+                        <span class="font-bold">real</span>.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="1">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section2">
+                <h3 class="fw-bolder">3.2 Accediendo a los componentes de una tupla</h3>
+                <div class="col-lg-8 py-3">
+                    <p>
+                        Como se ha visto las tuplas son un conjunto de componentes el cual pueden tener diferentes tipos de variables y valores, 
+                        ahora imaginemos que se desea acceder a 1 a uno de los valores de dicha tupla, 
+                        para ello se puede especificar la posición o el <span class="font-red-bold">#i</span> valor que se desea obtener. 
+                        A continuación un ejemplo para entender mejor.
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  val t = (4, 5.0, "six");
+  #1(t);
+  #3(t);
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn2">
+                        <code style="height: 60px;" class="language-vb">  val it = 4 : int
+  val it = "six" : string
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn2" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Se podría presentar un error si se intentara utilizar algo como <span class="font-red-bold">#4</span> debido a que el número de 
+                        componentes que conforman la tupla es de <span class="font-bold">3</span> y se estaría intentando acceder a un valor que no existe.
+                    </p>
+
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section3">
+                <h3 class="fw-bolder">3.3 Listas</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        ML proporciona una notación simple para las listas cuyos elementos son todos del mismo tipo. 
+                        Tomamos una lista de elementos, separados por comas y encerrados entre corchetes. 
+                        Una lista de tres enteros como <span class="font-bold">1, 2, 3</span> es representada en ML como <span class="font-red-bold">[1,2,3]</span>. 
+                        La respuesta de ML en una expresión constante con listas es de la siguiente manera:
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  [1,2,3]
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn3">
+                        <code style="height: 60px;" class="language-vb">  val it = [1,2,3] : int list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        La respuesta para nuestra lista es informativa. adicional a esto se puede observar como ML retorna el tipo 
+                        <span class="font-red-bold">int list</span> el cual es la forma en que ML nos indica que el tipo es <span class="font-bold">“lista de enteros”</span>.
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Para entender mejor acerca de las listas a continuación se mostrará un ejemplo donde erróneamente intentamos crear una lista de diferentes tipos. 
+                        Trataremos de crear una lista de 3 caracteres pero el último se olvidara poner el símbolo <span class="font-bold">#</span> que convierte un <span class="font-bold">string</span> en un carácter.
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  [#"a", #"b", "c"];
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn4">
+                        <code style="height: 60px;" class="language-vb">  Error: operator and operand dont agree [tycon mismatch]
+   operator domain: char * char list 
+   operand: char * string list
+   in expression:
+       #"b" :: "c" :: nil
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Explicaremos el error saliente más adelante después de ver un poco acerca de la notación de listas y operadores.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section4">
+                <h3 class="fw-bolder">3.4 Notación de listas y operadores</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        En esta sección vamos aprender diversos operadores para trabajar con listas. 
+                        Incluyendo notación para listas vacías, se hablara acerca de las cabezas de las listas y las colas, 
+                        como también la concatenación de listas
+                    </p>
+                    <h3>Listas vacías</h3>
+                    <p>
+                        Una lista vacía es una lista que no contiene elementos, es representada en ML ya sea por el nombre <span class="font-red-bold">nail</span> 
+                        (Es decir nulo) o por un par de corchetes <span class="font-bold">[]</span>.
+                    </p>
+                    <h3>Cabezas y colas</h3>
+                    <pre class="w-75">
+                        <code class="language-vb">  val L = [2,3,4];
+  val M = [5];
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  val L = [2,3,4] : int
+  val M = [5] : int list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p class="">
+                        Ahora se puede obtener la cabeza y la cola de dichas listas de la siguiente manera:
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  hd(L);
+  tl(L);
+  hd(M);
+  hl(M);
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb">  val it = 2 : int 
+  val it = [3,4] : int list
+  val it = 5 : int
+  val it = [] : int list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Como se puede observar, ML toma las cabezas de las listas como de tipo entero, 
+                        a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto" id="section5">
+                <h3 class="fw-bolder">3.4 Notación de listas y operadores</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        En esta sección vamos aprender diversos operadores para trabajar con listas. 
+                        Incluyendo notación para listas vacías, se hablara acerca de las cabezas de las listas y las colas, 
+                        como también la concatenación de listas
+                    </p>
+                    <h3>Listas vacías</h3>
+                    <p>
+                        Una lista vacía es una lista que no contiene elementos, es representada en ML ya sea por el nombre <span class="font-red-bold">nail</span> 
+                        (Es decir nulo) o por un par de corchetes <span class="font-bold">[]</span>.
+                    </p>
+                    <h3>Cabezas y colas</h3>
+                    <pre class="w-75">
+                        <code class="language-vb">  val L = [2,3,4];
+  val M = [5];
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  val L = [2,3,4] : int
+  val M = [5] : int list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p class="">
+                        Ahora se puede obtener la cabeza y la cola de dichas listas de la siguiente manera:
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  hd(L);
+  tl(L);
+  hd(M);
+  hl(M);
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb">  val it = 2 : int 
+  val it = [3,4] : int list
+  val it = 5 : int
+  val it = [] : int list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-5">
+                        Como se puede observar, ML toma las cabezas de las listas como de tipo entero, 
+                        a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
+                </div>
+            </div>
+            <section class="row mx-auto max-90 desactivate" id="section5">
+                <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ejemplos</h5>
+                            <p class="card-text text-start" style="height: 180px">
+                                A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
+                            </p>
+                            <a href="{% url 'type_consistency:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                    </div>
+    
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                          <h5 class="card-title">Ejercicios</h5>
+                          <p class="card-text text-start" style="height: 180px;">Los ejercicios buscan poder mejorar lo aprendido en este módulo, se le recomienda al estudiante realizar esta sección de ejercicios para poder culminar satisfactoriamente el módulo.</p>
+                          <a href="{% url 'type_consistency:ejercicios' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                      </div>
+    
+                </div>
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next">
+                        Ir al módulo 2
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'Antes de empezar a mencionar sobre ML, es recomendable leer el manual de usuario para poder instalar ML en su computador y de esa manera poder llevar a cabo los ejemplos y ejercicios que se desarrollen en los módulos', 
+    //     function(){ }
+    // );
+    let section = 1;
+    $(document).ready(function(){
+        $(".execute-code").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btncode = "#code"+$(this).attr('data-btn')
+                $(btncode).toggle("explode")
+                $(this).toggle("explode")
+            })
+        })
+        $(".next-btn").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btn_current_section = parseInt($(this).attr('data-next'))
+                next_section = "#section"+(btn_current_section + 1);
+                current_section = "#section"+btn_current_section;
+                console.log(next_section);
+                console.log(current_section);
+                $(current_section).addClass("desactivate")
+                $(next_section).removeClass("desactivate")
+            })
+        })
+        $('#go_to_practice').on('click', function(e){
+            for(var i = 1; i < 5; i ++){
+                target_tag = "#section"+i
+                if(!$(target_tag).hasClass('desactivate')){
+                    $(target_tag).addClass('desactivate')
+                }
+            }
+            $('#section5').removeClass('desactivate')
+            $('#go_to_practice').toggle('explode')
+        })
+    })
+</script>
+{% endblock scripts %}

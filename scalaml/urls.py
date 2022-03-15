@@ -26,4 +26,5 @@ urlpatterns = [
     re_path('',include('apps.declaraciones.urls')),
     re_path('',include('apps.expressions.urls')),
     re_path('',include('apps.type_consistency.urls')),
+    re_path('',include('apps.tuples_lists.urls')),
 ] + static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
