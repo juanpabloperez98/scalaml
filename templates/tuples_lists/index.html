@@ -149,7 +149,7 @@
                     <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
                 </div>
             </div>
-            <div class="row mx-auto desactivate" id="section4">
+            <div class="row mx-auto" id="section4">
                 <h3 class="fw-bolder">3.4 Notación de listas y operadores</h3>
                 <div class="col-lg-6 py-3">
                     <p>
@@ -162,7 +162,6 @@
                         Una lista vacía es una lista que no contiene elementos, es representada en ML ya sea por el nombre <span class="font-red-bold">nail</span> 
                         (Es decir nulo) o por un par de corchetes <span class="font-bold">[]</span>.
                     </p>
-                    <h3>Cabezas y colas</h3>
                     <pre class="w-75">
                         <code class="language-vb">  val L = [2,3,4];
   val M = [5];
@@ -174,84 +173,70 @@
                         </code>
                     </pre>
                     <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <h3 class="mt-5">Cabezas y colas</h3>
+                    <p>
+                        Cualquier lista diferente a una lista vacía contiene una cabeza, la cual es el primer elemento de dicha lista y una cola, que serán todos los elementos de dicha lista sin contar el primero
+                        <br>
+                        Por ejemplo, si <span class="font-red-bold">L</span> es una lista <span class="font-bold">[2,3,4]</span> entonces la cabeza de la lista sería <span class="font-bold">2</span> y la cola de la lista sería <span class="font-bold">[3,4]</span>. Si <span class="font-red-bold">M</span> es la lista <span class="font-bold">[5]</span> entonces la cabeza de <span class="font-red-bold">M</span> sería <span class="font-bold">5</span> y la cola sería una lista vacía <span class="font-bold">[]</span>
+                        <br>
+                        Podemos obtener la cabeza o la cola de una lista aplicando la función <span class="font-red-bold">hd</span> o <span class="font-red-bold">tl</span> para las listas respectivamente. Para entender un poco mejor véase el siguiente ejemplo, suponga que define una lista <span class="font-red-bold">L</span> y otra <span class="font-red-bold">M</span>
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  val L = [2,3,4];
+  val M = [5];
+                        </code>
+                    </pre>
                 </div>
                 <div class="col-lg-6 py-3">
-                    <p class="">
+                    <p>
                         Ahora se puede obtener la cabeza y la cola de dichas listas de la siguiente manera:
                     </p>
                     <pre class="w-75">
                         <code class="language-vb">  hd(L);
   tl(L);
   hd(M);
-  hl(M);
+  tl(M);
                         </code>
                     </pre>
-                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn6">
-                        <code style="height: 60px;" class="language-vb">  val it = 2 : int 
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  val it = 2 :int
   val it = [3,4] : int list
   val it = 5 : int
   val it = [] : int list
                         </code>
                     </pre>
-                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-5">
-                        Como se puede observar, ML toma las cabezas de las listas como de tipo entero, 
-                        a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-4">
+                        Como se puede observar, ML toma las cabezas de las listas como de tipo entero, a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
                     </p>
+                    <h3 class="mt-5">Concatenación de listas</h3>
+                    <p>
+                        Mientras <span class="font-red-bold">hd</span> y <span class="font-red-bold">tl</span> toman aparte las listas, 
+                        hay también dos operadores que construyen lista: <span class="font-red bold">concatenation</span> y <span class="font-red bold">cons</span>. <br>
+                        El operador concatenation opera para listas y es representado por el símbolo <span class="font-bold">@</span> que toma dos listas cuyos elementos son del mismo tipo y produce una lista consistente de elementos de la primera lista seguida de los elementos de la segunda lista, 
+                        tal como se muestra en el siguiente ejemplo.
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  [1,2] @ [3,4]
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
                 </div>
             </div>
-            <div class="row mx-auto" id="section5">
-                <h3 class="fw-bolder">3.4 Notación de listas y operadores</h3>
+            <div class="row mx-auto desactivate" id="section5">
+                <h3 class="fw-bolder">3.5 Notación de listas y operadores</h3>
                 <div class="col-lg-6 py-3">
-                    <p>
-                        En esta sección vamos aprender diversos operadores para trabajar con listas. 
-                        Incluyendo notación para listas vacías, se hablara acerca de las cabezas de las listas y las colas, 
-                        como también la concatenación de listas
-                    </p>
-                    <h3>Listas vacías</h3>
-                    <p>
-                        Una lista vacía es una lista que no contiene elementos, es representada en ML ya sea por el nombre <span class="font-red-bold">nail</span> 
-                        (Es decir nulo) o por un par de corchetes <span class="font-bold">[]</span>.
-                    </p>
-                    <h3>Cabezas y colas</h3>
-                    <pre class="w-75">
-                        <code class="language-vb">  val L = [2,3,4];
-  val M = [5];
-                        </code>
-                    </pre>
-                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
-                        <code style="height: 60px;" class="language-vb">  val L = [2,3,4] : int
-  val M = [5] : int list
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    
                 </div>
                 <div class="col-lg-6 py-3">
-                    <p class="">
-                        Ahora se puede obtener la cabeza y la cola de dichas listas de la siguiente manera:
-                    </p>
-                    <pre class="w-75">
-                        <code class="language-vb">  hd(L);
-  tl(L);
-  hd(M);
-  hl(M);
-                        </code>
-                    </pre>
-                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn6">
-                        <code style="height: 60px;" class="language-vb">  val it = 2 : int 
-  val it = [3,4] : int list
-  val it = 5 : int
-  val it = [] : int list
-                        </code>
-                    </pre>
-                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-5">
-                        Como se puede observar, ML toma las cabezas de las listas como de tipo entero, 
-                        a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
-                    </p>
+                    
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
