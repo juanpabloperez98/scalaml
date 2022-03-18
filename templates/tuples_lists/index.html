@@ -94,7 +94,6 @@
                         Se podría presentar un error si se intentara utilizar algo como <span class="font-red-bold">#4</span> debido a que el número de 
                         componentes que conforman la tupla es de <span class="font-bold">3</span> y se estaría intentando acceder a un valor que no existe.
                     </p>
-
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
@@ -149,7 +148,7 @@
                     <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
                 </div>
             </div>
-            <div class="row mx-auto" id="section4">
+            <div class="row mx-auto desactivate" id="section4">
                 <h3 class="fw-bolder">3.4 Notación de listas y operadores</h3>
                 <div class="col-lg-6 py-3">
                     <p>
@@ -186,8 +185,6 @@
   val M = [5];
                         </code>
                     </pre>
-                </div>
-                <div class="col-lg-6 py-3">
                     <p>
                         Ahora se puede obtener la cabeza y la cola de dichas listas de la siguiente manera:
                     </p>
@@ -198,42 +195,113 @@
   tl(M);
                         </code>
                     </pre>
-                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn6">
                         <code style="height: 60px;" class="language-vb">  val it = 2 :int
   val it = [3,4] : int list
   val it = 5 : int
   val it = [] : int list
                         </code>
                     </pre>
-                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
-                    <p class="mt-4">
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p>
                         Como se puede observar, ML toma las cabezas de las listas como de tipo entero, a diferencia de las colas que aun las sigue tomando de tipo lista de enteros.
                     </p>
-                    <h3 class="mt-5">Concatenación de listas</h3>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <h3>Concatenación de listas</h3>
                     <p>
                         Mientras <span class="font-red-bold">hd</span> y <span class="font-red-bold">tl</span> toman aparte las listas, 
                         hay también dos operadores que construyen lista: <span class="font-red bold">concatenation</span> y <span class="font-red bold">cons</span>. <br>
-                        El operador concatenation opera para listas y es representado por el símbolo <span class="font-bold">@</span> que toma dos listas cuyos elementos son del mismo tipo y produce una lista consistente de elementos de la primera lista seguida de los elementos de la segunda lista, 
+                        El operador <span class="font-red bold">concatenation</span> opera para listas y es representado por el símbolo <span class="font-bold">@</span> que toma dos listas cuyos 
+                        elementos son del mismo tipo y produce una lista consistente de elementos de la primera 
+                        lista seguida de los elementos de la segunda lista, 
                         tal como se muestra en el siguiente ejemplo.
                     </p>
                     <pre class="w-75">
                         <code class="language-vb">  [1,2] @ [3,4]
                         </code>
                     </pre>
-                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn5">
-                        <code style="height: 60px;" class="language-vb">  
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn7">
+                        <code style="height: 60px;" class="language-vb">  val it = [1,2,3,4] : int list
                         </code>
                     </pre>
-                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <a href="#" data-btn="btn7" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <h3 class="mt-5">Cons</h3>
+                    <p>
+                        El operador cons representado por un par de dos puntos <span class="font-bold">( : : )</span> 
+                        toma un elemento (La cabeza ) y una lista de elementos del mismo tipo como la cabeza y produce una lista simple 
+                        cuyo primer elemento es la cabeza y cuyos elementos restantes son los elementos de la cola, tal como se muestra a continuación:
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  2 :: [3,4];
+  2.0 :: nil
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn8">
+                        <code style="height: 60px;" class="language-vb">  val it = [2,3,4] : int list
+  val it = [2.0] : real list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn8" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        <span class="font-bold">NOTA</span>: es importante tener en consideración que tanto los operadores <span class="font-red-bold">const</span> como los operadores constantes 
+                        son operadores que agrupan de derecha a izquierda, es decir la expresión
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  1 :: 2 :: 3 :: nil
+                        </code>
+                    </pre>
+                    <p class="mt-5">
+                        Es agrupada de izquierda a derecha de esta manera
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  1 :: (2 :: (3 :: nil))
+                        </code>
+                    </pre>
                 </div>
                 <div class="col-lg-12 my-5 text-center">
                     <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
                 </div>
             </div>
-            <div class="row mx-auto desactivate" id="section5">
-                <h3 class="fw-bolder">3.5 Notación de listas y operadores</h3>
+            <div class="row mx-auto" id="section5">
+                <h3 class="fw-bolder">3.5 Conversión entre caracteres strings y listas</h3>
                 <div class="col-lg-6 py-3">
-                    
+                    <p>
+                        En ML, los <span class="font-bold">strings</span> y <span class="font-bold">listas</span> son de diferente tipo. Sin embargo hay una gran similaridad entre un 
+                        <span class="font-bold">string</span> y <span class="font-bold">una lista de caracteres</span>, y por esto es 
+                        posible convertir entre las dos representaciones usando las funciones incorporadas <span class="font-red-bold">explode</span> e <span class="font-red-bold">implode</span>. 
+                        La primera función toma un <span class="font-bold">string</span> y lo convierte a una <span class="font-bold">lista de caracteres</span>. 
+                        A continuación dos ejemplos de <span class="font-red-bold">explode</span>
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  explode("abcd");
+  explode("");
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn9">
+                        <code style="height: 60px;" class="language-vb">  val it = [#"a",#"b",#"c",#"d"] : char list
+  val it = [] : char list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn9" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p>
+                        Nótese que el segundo ejemplo el <span class="font-bold">“”</span> es un string vacío el cual cuando se le aplica la función 
+                        <span class="font-red-bold">explode</span> devuelve una lista vacía de caracteres.
+                        <br>
+                        La función <span class="font-red-bold">implode</span> toma una lista cuyos elementos son caracteres y concatena todos los caracteres 
+                        juntos en un <span class="font-bold">string</span>.
+                    </p>
+                    <pre class="w-75">
+                        <code class="language-vb">  implode([#"a",#"b",#"c",#"d"]);
+  implode(nil);
+                        </code>
+                    </pre>
+                    <pre class="w-75 desactivate" style="margin-top: -80px;" id="codebtn10">
+                        <code style="height: 60px;" class="language-vb">  val it = "abcd" : string
+  val it = "" : string
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn10" class="btn btn-custom-red execute-code">Ejecutar</a>
                 </div>
                 <div class="col-lg-6 py-3">
                     
