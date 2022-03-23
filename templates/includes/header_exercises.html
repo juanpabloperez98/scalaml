@@ -24,6 +24,12 @@
                             Volver
                         </a>
                     {% endif %}
+                    {% if page and page == 3 %}
+                        <a class="nav-link" href="{% url 'tuples_lists:main' %}">
+                            <img src="{% static 'images/iconos/return.png' %}" alt="">
+                            Volver
+                        </a>
+                    {% endif %}
                         
                 </li>
             </ul>

@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <!-- Top menu -->
+    <div class="sidebar">
+        <!-- Profile -->
+        <ul>
+            <li>
+                
+                {% if num_example and num_example == 1 %}
+                    <a href="{% url 'tuples_lists:ejemplo1' %}" style="color: #ff2600;">Ejemplo 1</a>
+                {% else %}
+                    <a href="{% url 'tuples_lists:ejemplo1' %}">Ejemplo 1</a>
+                {% endif %}
+                    
+            </li>
+            <li>
+                {% if num_example and num_example == 2 %}
+                    <a href="{% url 'tuples_lists:ejemplo2' %}" style="color: #ff2600;">Ejemplo 2</a>
+                {% else %}
+                    <a href="{% url 'tuples_lists:ejemplo2' %}">Ejemplo 2</a>
+                {% endif %}
+            </li>
+            <!-- <li>
+                {% if num_example and num_example == 3 %}
+                    <a href="{% url 'expressions:ejemplo3' %}" style="color: #ff2600;">Ejemplo 3</a>
+                {% else %}
+                    <a href="{% url 'expressions:ejemplo3' %}">Ejemplo 3</a>
+                {% endif %}
+            </li> -->
+        </ul>
+        <!-- Menu item -->
+    </div>
+</div>
+    
+    

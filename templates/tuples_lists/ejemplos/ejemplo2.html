@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'tuples_lists/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 2</h3>
+                <p>
+                    Dada una palabra ingresada por el usuario (no más de 4 caracteres de longitud) se pide realizar un programa que pueda coger cada 
+                    una de las letras de la palabra convierta a su correspondiente código ASCII y 
+                    haga la suma de dicha palabra.
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">val word = numero_ingresado;</span>
+    <span id="pass2" data-index="2">val convert_word = explode(word);</span>
+    <span id="pass3" data-index="3">val firts_element = ord(hd(convert_word));</span>
+    <span id="pass4" data-index="4">val second_first = ord(hd(tl(convert_word)));</span>
+    <span id="pass5" data-index="5">val third_first = ord(hd(tl(tl(convert_word))));</span>
+    <span id="pass6" data-index="6">val four_first = ord(hd(tl(tl(tl(convert_word)))));</span>
+    <span id="pass7" data-index="7">val suma = firts_element + second_first + third_first + four_first;</span>
+                </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">Se define la variable llamada word la cual va almacenar el valor ingresado</span>
+ <span id="code_2" class="desactivate">Luego se define la variable convert_word y se iguala al valor retornado por la función explode (NOTA: recordar que la función explode convierte un string a una lista de caracteres)</span>                        
+ <span id="code_3" class="desactivate">Se obtiene el primer elemento de la lista y utilizando la función ord se obtiene el código ASCII correspondiente del elemento devuelto, y este se almacena en la variable firts_element</span>                        
+ <span id="code_4" class="desactivate">Se obtiene el segundo elemento de la lista y utilizando la función ord se obtiene el código ASCII correspondiente del elemento devuelto, y este se almacena en la variable second_element</span>
+ <span id="code_5" class="desactivate">Se obtiene el tercer elemento de la lista y utilizando la función ord se obtiene el código ASCII correspondiente del elemento devuelto, y este se almacena en la variable third_element</span>
+ <span id="code_6" class="desactivate">Se obtiene el cuarto elemento de la lista y utilizando la función ord se obtiene el código ASCII correspondiente del elemento devuelto, y este se almacena en la variable four_element</span>
+ <span id="code_7" class="desactivate">Por último se suman todas las variables definidas anteriormente (firts_element, second_element, third_element, four_element)</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <span style="font-size: 17px;">Ingrese una palabra no mayor a 4 caracteres</span>
+                    <input type="text" class="mx-auto mt-3 d-block" placeholder="Ingrese palabra" id="input_number">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    alertify.alert(
+        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar dos listas para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable word de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+        function(){ }
+    );
+
+    // Vars
+    var string_input = ""
+
+
+    var check_if_str  = (data) => {
+        state = (typeof data === 'string' || data instanceof String) && data != "" ? true : false
+        return state
+    }
+
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 7
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+
+            
+            if (init_pass == 2){
+                string_input = $('#input_number').val()
+                let state = check_if_str(string_input);
+                if(!state){
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+                console.log(string_input.length);
+                if(string_input.length > 5){
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Longitud no invalida","Ingresa una palabra con longitud max de 4", function(){ });
+                }
+                $('#input_number').val("")
+                if(init_pass == 2){
+                    $('#input').toggle('explode')
+                }
+            }
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            var suma = 0
+            for(let i = 0; i < string_input.length; i++){
+                suma += string_input[i].charCodeAt()
+            }
+            return suma
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = show_result()
+            $('#resulttag').html("val suma = " + result + " : int")
+        })
+    })
+</script>
+{% endblock scripts %}
