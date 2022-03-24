@@ -9,4 +9,5 @@ urlpatterns = [
     path('expresiones/ejemplo2', ejemplo2.as_view(), name = 'ejemplo2'),
     path('expresiones/ejemplo3', ejemplo3.as_view(), name = 'ejemplo3'),
     path('expresiones/ejemplo4', ejemplo4.as_view(), name = 'ejemplo4'),
+    path('expresiones/ejercicios', ejercicios.as_view(), name = 'ejercicios'),
 ]

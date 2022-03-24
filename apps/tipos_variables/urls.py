@@ -9,4 +9,5 @@ urlpatterns = [
     path('tipos_variables/ejemplo2', tipo_variables_ejemplo2.as_view(), name = 'ejemplo2'),
     path('tipos_variables/ejemplo3', tipo_variables_ejemplo3.as_view(), name = 'ejemplo3'),
     path('tipos_variables/ejercicios', ejercicios.as_view(), name = 'ejercicios'),
+    
 ]

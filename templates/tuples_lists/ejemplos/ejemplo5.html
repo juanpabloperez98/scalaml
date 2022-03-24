@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'tuples_lists/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 4</h3>
+                <p>
+                    Crear un programa que permita dada una lista de enteros de 4 elementos poder devolver el número mayor que se encuentra en dicha lista
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">val lista = lista_ingresada;</span>
+    <span id="pass2" data-index="2">val mayor = 0;</span>
+    <span id="pass3" data-index="3">val element_first = hd(lista);</span>
+    <span id="pass4" data-index="4">val element_second = hd(tl(lista));</span>
+    <span id="pass5" data-index="5">val element_third = hd(tl(tl(lista)));</span>
+    <span id="pass6" data-index="6">val element_four = hd(tl(tl(tl(lista))));</span>
+    <span id="pass7" data-index="7">val mayor = if mayor < element_first then element_first else mayor;</span>
+    <span id="pass8" data-index="8">val mayor = if mayor < element_second then element_second else mayor;</span>
+    <span id="pass9" data-index="9">val mayor = if mayor < element_third then element_third else mayor;</span>
+    <span id="pass10" data-index="10">val mayor = if mayor < element_four then element_four else mayor;</span>
+    <span id="pass11" data-index="11">if mayor = element_first then 1 </span>
+    <span id="pass12" data-index="12">else </span>
+    <span id="pass13" data-index="13">    if mayor = element_second then 2</span>
+    <span id="pass14" data-index="14">    else</span>
+    <span id="pass15" data-index="15">        if mayor = element_third then 3</span>
+    <span id="pass16" data-index="16">        else</span>
+    <span id="pass17" data-index="17">            if mayor = element_four then 4 else mayor</span>
+                </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">Se declara la variable lista y se iguala a la lista ingresada por el usuario</span>
+  <span id="code_2" class="desactivate">Se declara la variable mayor (Esta ayudará a llevar la cuenta de cuál es el número mayor) se empieza igualando en cero</span>                        
+  <span id="code_3" class="desactivate">Se obtiene el primer elemento de la lista</span>
+  <span id="code_4" class="desactivate">Se obtiene el segundo elemento de la lista</span>
+  <span id="code_5" class="desactivate">Se obtiene el tercer elemento de la lista</span>
+  <span id="code_6" class="desactivate">Se obtiene el cuarto elemento de la lista</span>
+  <span id="code_7" class="desactivate">Se valida si el valor de la variable mayor es menor que el primer elemento de la lista, de ser así entonces la variable mayor se actualiza al valor del primer elemento de la lista almacenado en la variable element_first</span>
+  <span id="code_8" class="desactivate">Se valida si el valor de la variable mayor es menor que el segundo elemento de la lista, de ser así entonces la variable mayor se actualiza al valor del segundo elemento de la lista almacenado en la variable element_second</span>
+  <span id="code_9" class="desactivate">Se valida si el valor de la variable mayor es menor que el segundo elemento de la lista, de ser así entonces la variable mayor se actualiza al valor del tercer elemento de la lista almacenado en la variable element_third</span>
+  <span id="code_10" class="desactivate">Se valida si el valor de la variable mayor es menor que el cuarto elemento de la lista, de ser así entonces la variable mayor se actualiza al valor del cuarto elemento de la lista almacenado en la variable element_four</span>
+  <span id="code_11" class="desactivate">Se valida si el valor de la variable mayor es igual al valor del primer elemento de la lista de ser así entonces se coloca que la posición es la posición 1</span>
+  <span id="code_12" class="desactivate">De lo contrario</span>
+  <span id="code_13" class="desactivate">Se valida si el valor de la variable mayor es igual al valor del segundo elemento de la lista de ser así entonces se coloca que la posición es la posición 2</span>
+  <span id="code_14" class="desactivate">De lo contrario</span>
+  <span id="code_15" class="desactivate">Se valida si el valor de la variable mayor es igual al valor del tercer elemento de la lista de ser así entonces se coloca que la posición es la posición 3</span>
+  <span id="code_16" class="desactivate">De lo contrario</span>
+  <span id="code_17" class="desactivate">Se valida si el valor de la variable mayor es igual al valor del cuarto elemento de la lista de ser así entonces se coloca que la posición es la posición 4</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <h3>Ingrese lista</h3>
+                    <span style="font-size: 10px;">Nota para ingresar una lista es necesario escribir los corchetes</span>
+                    <input type="text" class="mx-auto mt-3 d-block" placeholder="ex [1,2,3,4]" id="input_number">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    alertify.alert(
+        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar dos listas para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable lista de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+        function(){ }
+    );
+
+    let global_list;
+    
+    // Function to indentify if the value sent by user is a list
+    var check__if_list = (input) => {
+        len_ = input.length
+        state = input[0] != "[" || input[len_ - 1] != "]" ? false : true
+        if(!state){
+            return false
+        }
+        try{
+            global_list = JSON.parse(input)
+            return true
+        } catch (error) {
+            return false
+        }
+    }
+
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 17
+        values = [] 
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+
+            if (init_pass == 2){
+                num_trans = $('#input_number').val()
+                let state = check__if_list(num_trans);
+                if(!state){
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+                $('#input_number').val("")
+                if(init_pass == 2){
+                    $('#input').toggle('explode')  
+                }
+            }
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            let mayor = 0,
+                pos = 0;
+            for(let i = 0; i < global_list.length; i++){
+                if(mayor < global_list[i]){
+                    mayor = global_list[i]
+                    pos = i+1
+                }
+            }
+            return pos
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = "val it = " + show_result() + " : int"
+            $('#resulttag').html(result)
+        })
+    })
+</script>
+{% endblock scripts %}
