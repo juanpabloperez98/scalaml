@@ -64,5 +64,5 @@ class ejercicios(TemplateView):
         context = super().get_context_data(**kwargs)
         context['example'] = True
         context['page'] = 3
-        context['redirect_url'] = settings.URL_REDIRECT + "type_consistency"
+        context['redirect_url'] = settings.URL_REDIRECT + "tuples_lists"
         return context
