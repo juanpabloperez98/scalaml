@@ -19,13 +19,27 @@
                     <a href="{% url 'tuples_lists:ejemplo2' %}">Ejemplo 2</a>
                 {% endif %}
             </li>
-            <!-- <li>
+            <li>
                 {% if num_example and num_example == 3 %}
-                    <a href="{% url 'expressions:ejemplo3' %}" style="color: #ff2600;">Ejemplo 3</a>
+                    <a href="{% url 'tuples_lists:ejemplo3' %}" style="color: #ff2600;">Ejemplo 3</a>
                 {% else %}
-                    <a href="{% url 'expressions:ejemplo3' %}">Ejemplo 3</a>
+                    <a href="{% url 'tuples_lists:ejemplo3' %}">Ejemplo 3</a>
                 {% endif %}
-            </li> -->
+            </li>
+            <li>
+                {% if num_example and num_example == 4 %}
+                    <a href="{% url 'tuples_lists:ejemplo4' %}" style="color: #ff2600;">Ejemplo 4</a>
+                {% else %}
+                    <a href="{% url 'tuples_lists:ejemplo4' %}">Ejemplo 4</a>
+                {% endif %}
+            </li>
+            <li>
+                {% if num_example and num_example == 5 %}
+                    <a href="{% url 'tuples_lists:ejemplo5' %}" style="color: #ff2600;">Ejemplo 5</a>
+                {% else %}
+                    <a href="{% url 'tuples_lists:ejemplo5' %}">Ejemplo 5</a>
+                {% endif %}
+            </li>
         </ul>
         <!-- Menu item -->
     </div>

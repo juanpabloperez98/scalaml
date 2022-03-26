@@ -1,9 +1,8 @@
+from django.conf import settings
 from django.shortcuts import render
-
 # Create your views here.
-from django.views.generic import(
-    TemplateView
-)
+from django.views.generic import TemplateView
+
 
 class expressions(TemplateView):
     template_name = "expressions/index.html"
@@ -47,5 +46,15 @@ class ejemplo4(TemplateView):
         context['example'] = True
         context['num_example'] = 4
         context['page'] = 1
+        return context
+
+class ejercicios(TemplateView):
+    template_name = "expressions/practica/practica.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['example'] = True
+        context['page'] = 1
+        context['redirect_url'] = settings.URL_REDIRECT + "expressions"
         return context
     

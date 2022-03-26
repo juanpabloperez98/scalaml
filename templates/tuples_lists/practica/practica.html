@@ -35,24 +35,27 @@
         <div class="col-lg-9" id="exercise1">
             <h3>Ejercicio 1</h3>
             <p class="mt-4">
-                De acuerdo a la siguientes expresiones seleccione cuál de los siguientes sería el resultado que arrojaría
-                <pre id="explain_code">
-                    <code class="language-vb">  ord(#"Y");
-  ceil(23.58);
-  if true then 5+6 else 3;
+                Cual es el resultado (respectivamente) de las siguientes expresiones:
+            <pre id="explain_code">
+                    <code class="language-vb">  hd(tl(["Hola","Mundo","Programacion","SML"]));
+  #2((2,20.5,"Hola")) / hd([2.5,10.5,2.654]);
+  ["Hola","Mundo"]@["Programacion","ML"];
                 </code>
             </pre>
             </p>
             <form class="mt-5" id="form1">
-                <label class="container">val it = 89 : int; -   val it = 23 : float; -  val it = "Y" : string;
+                <label class="container">val it = 10.25 : real - val it = 8.2 : real - val it =
+                    "HolaMundoProgramacionML" : string
                     <input type="radio" checked="checked" name="exercise1" value="1">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">val it = 89 : int;  -  val it = 24 : int; -  val it = 11 : int;
+                <label class="container">val it = "Mundo" : string - val it = 10 : int - val it =
+                    "HolaMundoProgramacionML" : string
                     <input type="radio" name="exercise1" value="2">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">val it = y : string; -   val it = 23.58 : float; -  val it = 11 : int;
+                <label class="container">val it = "Mundo" : string - val it = 10.25 : real - val it =
+                    "HolaMundoProgramacionML" : string
                     <input type="radio" name="exercise1" value="3">
                     <span class="checkmark"></span>
                 </label>
@@ -66,15 +69,27 @@
         <div class="col-lg-9 desactivate" id="exercise2">
             <h3>Ejercicio 2</h3>
             <p class="mt-4">
-                La operación entre dos argumentos de diferentes tipos es permitida para la operación de suma
+                ¿Qué está mal con la siguiente expresión?
+                <pre id="explain_code">
+                    <code class="language-vb">  ["r"] :: ["a","t"];
+                    </code>
+                </pre>
             </p>
             <form class="mt-5" id="form2">
-                <label class="container">Verdadero
+                <label class="container">La forma correcta para agregar una lista al cuerpo de otra lista es usando el operador @ 
                     <input type="radio" checked="checked" name="exercise2" value="1">
                     <span class="checkmark"></span>
                 </label>
-                <label class="container">Falso
+                <label class="container">Los elementos de la lista están mal formados debido a que se quiere representar caracteres  y para representar caracteres es necesario colocar el símbolo #
                     <input type="radio" name="exercise2" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">El operador :: permite agregar a la cabeza de una lista un elemento del mismo tipo que los elementos de la lista
+                    <input type="radio" name="exercise2" value="3">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Dos listas no se pueden concatenar
+                    <input type="radio" name="exercise2" value="4">
                     <span class="checkmark"></span>
                 </label>
                 <a href="#" id="answer2" class="btn btn-danger d-block w-25 mt-5 mx-auto">Escoger respuesta</a>
@@ -83,23 +98,23 @@
         <div class="col-lg-9 desactivate" id="exercise3">
             <h3>Ejercicio 3</h3>
             <p class="mt-4">
-                Cual de las siguientes expresiones da como resultado el valor 97
+                Las tuplas y las listas son elementos similares, la principal diferencia es:
             </p>
             <form id="form3">
                 <label class="container">
-                    <input type="radio" checked="checked" name="exercise3" value="1">  ord(#"S") + 7;
+                    <input type="radio" checked="checked" name="exercise3" value="1"> Las listas pueden almacenar ilimitada cantidades de elementos dentro de ellas mientras las tuplas no
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">
-                    <input type="radio" name="exercise3" value="2">  floor(96.5);
+                    <input type="radio" name="exercise3" value="2"> Las tuplas puede contener cualquier tipo de elementos dentro de ellas y las listas los elementos dentro de ellas deben ser del mismo tipo
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">
-                    <input type="radio" name="exercise3" value="3">  ord(#"A") + 100 div 4 + ceil(5.658) + 1;
+                    <input type="radio" name="exercise3" value="3"> Se pueden hacer operaciones con tuplas pero con listas no
                     <span class="checkmark"></span>
                 </label>
                 <label class="container">
-                    <input type="radio" name="exercise3" value="4">  ord(#"A") + ord(#"6") - (5*5)
+                    <input type="radio" name="exercise3" value="4"> Todas las anteriores
                     <span class="checkmark"></span>
                 </label>
                 <a href="#" id="answer3" class="btn btn-danger d-block w-50 mt-5 mx-auto">Escoger respuesta</a>
@@ -113,15 +128,15 @@
 {% block scripts %}
 
 <script>
-    answer1 = 2
-    answer2 = 2
-    answer3 = 3
+    answer1 = 3
+    answer2 = 3
+    answer3 = 2
     total = 0
     var a = "{{redirect_url}}";
     $(document).ready(function () {
         $('#answer1').on('click', function () {
             answer = $("input[name='exercise1']:checked").val()
-            if (answer == answer1){
+            if (answer == answer1) {
                 total += 1
             }
             $('#exercise_tag_2').removeClass('disabled')
@@ -132,7 +147,7 @@
         })
         $('#answer2').on('click', function () {
             answer = $("input[name='exercise2']:checked").val()
-            if (answer == answer2){
+            if (answer == answer2) {
                 total += 1
             }
             $('#exercise_tag_3').removeClass('disabled')
@@ -143,25 +158,25 @@
         })
         $('#answer3').on('click', function () {
             answer = $("input[name='exercise3']:checked").val()
-            if (answer == answer3){
+            if (answer == answer3) {
                 total += 1
             }
             console.log(total);
-            msg  = ""
-            if (total > 1){
+            msg = ""
+            if (total > 1) {
                 msg += "Felicidades usted ha contestado " + total + "/3 respuestas correctamente"
-            }else{
+            } else {
                 msg += "Usted ha contestado " + total + "/3 respuestas correctamente, le recomendamos repasar el módulo nuevamente"
             }
             console.log(
-                typeof(a)
+                typeof (a)
             );
-            alertify.confirm("Haz terminado el módulo",msg,
+            alertify.confirm("Haz terminado el módulo", msg,
                 function () {
                 },
                 function () {
-                    window.location.href=a;
-                }).set('labels',{ok:"Ir al siguiente módulo", cancel:"Volver al módulo"});
+                    window.location.href = a;
+                }).set('labels', { ok: "Ir al siguiente módulo", cancel: "Volver al módulo" });
         })
     })
 </script>
