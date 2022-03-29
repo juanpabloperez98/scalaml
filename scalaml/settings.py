@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'apps.expressions',
     'apps.type_consistency',
     'apps.tuples_lists',
+    'apps.defining_functions',
 ]
 
 MIDDLEWARE = [

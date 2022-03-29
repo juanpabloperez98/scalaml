@@ -1,0 +1,300 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/app/general.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<main>
+
+    <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <div class="col-lg-2 ms-auto">
+            <a href="#" id="go_to_practice">Ir a la practica</a>
+        </div>
+    </section>
+    <section class="row mx-auto max-90" style="margin-top: 1em;">
+        <div class="col-lg-12">
+            <div class="row mx-auto" id="section1">
+                <h3 class="fw-bolder">4.1 Definiendo funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        La base de los lenguajes de programación funcional, valga la redundancia son las funciones, y es que esta palabra 
+                        divertida se considera como un bloque de sección el cual recibe <span class="font-red-bold">parámetros</span> o <span class="font-red-bold">argumentos</span> y 
+                        realiza ciertas acciones, operaciones y validaciones la cual permitirán retornar un resultado. 
+                        La forma más simple para declarar una función es:
+                    </p>
+                    
+                    <pre>
+                        <code style="height: 60px;" class="language-vb"> fun < identifier >(< parameter list >) = < expression >
+                        </code>
+                    </pre>
+
+                    <p class="mt-1">
+                        Esta expresión utiliza la palabra reservada <span class="font-red-bold">fun</span> para definir la función, acompañada del nombre de la 
+                        función o el identificador que caracterizará o (valga la redundancia) <span class="font-bold">identifica</span> la función 
+                        creada para luego ser llamada, 
+                        recibiendo una lista de parámetros o argumentos.
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Supongamos que queremos crear una función que transforme un carácter en minúscula a su correspondiente carácter en mayúscula, 
+                        dicha función la llamaremos <span class="font-red-bold">upper</span>. 
+                        Para entender cómo realizar esta función es necesario tener en cuenta que todo código <span class="font-bold">ASCII</span> para una 
+                        letra en mayúscula siempre será el código <span class="font-bold">ASCII</span> de la letra en minúscula menos 32, 
+                        entendiendo esto la función <span class="font-red-bold">upper</span> va a realizar los siguientes pasos:
+                        <ul>
+                            <li>Va a tomar un carácter y lo va a convertir a su código ASCII (entero)</li>
+                            <li>Después ese resultado lo va a restar entre 32</li>
+                            <li>El resultado de la resta se vuelve a convertir en carácter</li>
+                        </ul>
+                        Entonces la definición de la función <span class="font-red-bold">upper</span> sería:
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb"> fun upper(c) = chr(ord(c) - 32);
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn1">
+                        <code style="height: 60px;" class="language-vb">  val upper = fn : char -> char
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn1" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="1">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section2">
+                <h3 class="fw-bolder">4.2 Tipos de funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Anteriormente vimos como <span class="font-bold">ML</span> representa los tipos de funciones. La respuesta del ejemplo anterior de la definición 
+                        de la función <span class="font-red-bold">upper</span> fue:
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb"> val upper = fn : char -> char
+                        </code>
+                    </pre>
+
+                    <p class="mt-1">
+                        La respuesta de la función consiste de:
+                        <ul>
+                            <li>La palabra reservada <span class="font-red-bold">fn</span> que representa de que es una función</li>
+                            <li>Acompañada después de dos puntos</li>
+                            <li>El tipo de parámetro o parámetros que recibe la función, esta es llamada <span class="font-bold">dominio</span> de tipo o en inglés (<span class="font-bold">domain type</span>). Para el ejemplo anterior por ejemplo el tipo es de tipo <span class="font-red-bold">char</span>.</li>
+                            <li>Luego viene el símbolo <span class="font-red-bold">-></span></li>
+                            <li>El tipo del resultado de la función es representado por el range <span class="font-bold">type</span>. 
+                                Para el ejemplo anterior el tipo de <span class="font-bold">range</span> o tipo de la función es también un <span class="font-bold">char</span>. 
+                                ML interpreta el retorno de cada función como un valor único, pero este valor puede ser una tupla como efecto de que una función puede retornar diferentes elementos
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        El operador <span class="font-red-bold">-></span> es otra forma de tipos de constructores. Si <span class="font-bold">T1</span> y <span class="font-bold">T2</span> son tipos, 
+                        entonces <span class="font-bold">T1</span> -> <span class="font-bold">T2</span> es el tipo de funciones con dominio de tipo <span class="font-bold">T1</span> y el tipo de rango <span class="font-bold">T2</span>. 
+                        Es decir, funciones que toman un argumento de tipo <span class="font-bold">T1</span> y devuelven un resultado de tipo <span class="font-bold">T2</span>. <br>
+                        Operador -> es <span class="font-bold">asociativo hacía la derecha</span> entonces <span class="font-bold">T1</span> -> <span class="font-bold">T2</span> -> <span class="font-bold">T3</span> es interpretado como:
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb"> T1 -> (T2 -> T3)
+                        </code>
+                    </pre>
+                    <p>
+                        y es el tipo de una función cuyo parámetro es de tipo <span class="font-bold">T1</span> y cuyo resultado es a su vez una función; dicha función tiene dominio de tipo <span class="font-bold">T2</span> y rango de tipo <span class="font-bold">T3</span>. 
+                        La noción de una función que produce una función como valor puede parecer extraña, pero estas "funciones de orden superior" son una parte integral de la programación ML que examinaremos más adelante.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section3">
+                <h3 class="fw-bolder">4.3 Declarando tipos de funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Puede sonar algo impresionante tener que declarar el tipo de parámetro que recibe la función o más impresionante de que se pueda declarar 
+                        el tipo de resultado de la función. 
+                        Para el ejemplo de la función <span class="font-red-bold">upper</span> <span class="font-bold">ML</span> deduce que ambos tipos son de tipo <span class="font-red-bold">char</span> (tanto el del parámetro de la función como el del resultado de la misma). 
+                        En general <span class="font-bold">ML</span> no requiere declaración para los tipos, sin embargo eres libre de declarar el tipo si así lo deseas.
+                        Las situaciones más comunes en las cuales tenemos que declarar un tipo es cuando <span class="font-bold">ML</span> utilizará la regla por defecto para un operador aritmético o de comparación. 
+                        En nuestro siguiente ejemplo se representa la función que multiplica reales.
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">fun square(x:real) = x * x;
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn3">
+                        <code style="height: 60px;" class="language-vb">  val square = fn : real -> real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        La función <span class="font-red-bold">square</span> tiene una parámetro <span class="font-bold">x</span>. 
+                        Al seguir el parámetro <span class="font-bold">x</span> con dos puntos y el tipo <span class="font-bold">real</span>, declaramos a ML que el parámetro de la función cuadrado es de tipo <span class="font-bold">real</span>. ML entonces infiere que la expresión <span class="font-bold">x*x</span> representa multiplicación de <span class="font-red-bold">reales</span>, y ante el valor retornado por la función <span class="font-red-bold">square</span>
+                        es de tipo <span class="font-bold">real</span>
+                        <br>
+                        Se puede indicar que <span class="font-bold">x</span> es de tipo <span class="font-bold">real</span> sin embargo, por otro lado ML 
+                        va a usar como tipo por defecto <span class="font-bold">int</span> y el resultado de la función <span class="font-red-bold">square</span> será también de tipo 
+                        <span class="font-red-bold">int</span>
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb"> fun square(x) = x * x;
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn4">
+                        <code style="height: 60px;" class="language-vb">  val square = fn : int -> int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section4">
+                <h3 class="fw-bolder">4.4 Aplicación de funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Como un ejemplo del uso de la función <span class="font-red-bold">square</span>, supongamos que hemos definido las variables <span class="font-bold">pi</span> y <span class="font-bold">radius</span> con valores 
+                        <span class="font-bold">3.14159</span> y <span class="font-bold">4.0</span>. Se puede escribir lo siguiente:
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  val pi = 3.14159;
+  val radius = 4.0;
+  pi*square(radius);
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  val it = 50.26544 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        En este ejemplo, <span class="font-red-bold">pi</span> tiene almacenado un valor de tipo <span class="font-bold">real</span> al igual que 
+                        la variable <span class="font-red-bold">radius</span>, por ende la función <span class="font-red-bold">square</span> retornara un valor de tipo <span class="font-bold">real</span> permitiéndonos 
+                        realizar la operación entre <span class="font-red-bold">pi</span> y el valor retornado de <span class="font-red-bold">square</span>. 
+                        La aplicación de las funciones tienen mayor precedencia que cualquier otro operador aritmético entonces la expresión anterior aplica primero la función <span class="font-red-bold">square</span> con el argumento 
+                        <span class="font-red-bold">radius</span> y el resultado es multiplicado por <span class="font-red-bold">pi</span>.
+                        <br>
+                        <br>
+                        Cuando se utilizan funciones con un solo parámetro como argumento, es indiferente si se agregan o no los paréntesis en cuanto al llamado de la función, pero sí influye en la precedencia de los operadores, para entender mejor un poco la precedencia revisemos el siguiente ejemplo:
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  val x = 3.0;
+  val y = 4.0;
+  square x+y;
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb">  val it = 13.0 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        La función <span class="font-red-bold">square</span> tiene precedencia por encima de la operación de suma por ende 
+                        ML asocia la expresión de manera que primero aplica (<span class="font-red-bold">square</span> <span class="font-bold">x</span>) 
+                        y al resultado le suma el valor de la variable <span class="font-bold">y</span> 
+                        en este caso el resultado de <span class="font-red-bold">square</span> <span class="font-bold">x</span> es 12.0 y sumado con el valor de <span class="font-bold">y</span> que es 4.0 dará como respuesta 13.0. 
+                        Si aplicaramos la misma expresión pero ahora usando los paréntesis sería de la siguiente manera:
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  val x = 3.0;
+  val y = 4.0;
+  square(x+y);
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn7">
+                        <code style="height: 60px;" class="language-vb">  val it = 49.0 : real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn7" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p>
+                        Donde la función <span class="font-red-bold">square</span> esta vez va a tomar como parámetro 12.0 qué es el resultado de la suma entre <span class="font-bold">x - y</span>.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
+                </div>
+            </div>
+            <section class="row mx-auto max-90 desactivate" id="section5">
+                <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ejemplos</h5>
+                            <p class="card-text text-start" style="height: 180px">
+                                A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
+                            </p>
+                            <a href="{% url 'type_consistency:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                    </div>
+    
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                          <h5 class="card-title">Ejercicios</h5>
+                          <p class="card-text text-start" style="height: 180px;">Los ejercicios buscan poder mejorar lo aprendido en este módulo, se le recomienda al estudiante realizar esta sección de ejercicios para poder culminar satisfactoriamente el módulo.</p>
+                          <a href="{% url 'type_consistency:ejercicios' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                      </div>
+    
+                </div>
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next">
+                        Ir al módulo 2
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'Antes de empezar a mencionar sobre ML, es recomendable leer el manual de usuario para poder instalar ML en su computador y de esa manera poder llevar a cabo los ejemplos y ejercicios que se desarrollen en los módulos', 
+    //     function(){ }
+    // );
+    let section = 1;
+    $(document).ready(function(){
+        $(".execute-code").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btncode = "#code"+$(this).attr('data-btn')
+                $(btncode).toggle("explode")
+                $(this).toggle("explode")
+            })
+        })
+        $(".next-btn").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btn_current_section = parseInt($(this).attr('data-next'))
+                next_section = "#section"+(btn_current_section + 1);
+                current_section = "#section"+btn_current_section;
+                console.log(next_section);
+                console.log(current_section);
+                $(current_section).addClass("desactivate")
+                $(next_section).removeClass("desactivate")
+            })
+        })
+        $('#go_to_practice').on('click', function(e){
+            for(var i = 1; i < 5; i ++){
+                target_tag = "#section"+i
+                if(!$(target_tag).hasClass('desactivate')){
+                    $(target_tag).addClass('desactivate')
+                }
+            }
+            $('#section5').removeClass('desactivate')
+            $('#go_to_practice').toggle('explode')
+        })
+    })
+</script>
+{% endblock scripts %}
