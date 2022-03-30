@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'defining_functions/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 2</h3>
+                <p>
+                    Realice una función que recibe una tupla como parámetro y devuelva el número menor de los elementos de dicha tupla
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">val tupla = tupla_ingresada;</span>
+    <span id="pass2" data-index="2">fun lesser_to_numbers(x,y) = </span>
+    <span id="pass3" data-index="3">    if x < y then x else y;</span>
+    <span id="pass4" data-index="4">fun lesser(x,y,z) = </span>
+    <span id="pass5" data-index="5">    lesser_to_numbers(lesser_to_numbers(x,y),z);</span>
+    <span id="pass6" data-index="6">lesser(tupla);</span>
+                </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">El valor de la letra p es 112</span>
+ <span id="code_2" class="desactivate">El valor de la letra r es 114</span>                        
+ <span id="code_3" class="desactivate">El valor de la letra o es 111</span>                        
+ <span id="code_4" class="desactivate">El valor de la letra g es 103</span>
+ <span id="code_5" class="desactivate">El valor de la letra r es 114</span>
+ <span id="code_6" class="desactivate">El valor de la letra a es 97</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <h3>Ingrese tupla</h3>
+                    <span style="font-size: 10px;">Nota para ingresar una tupla es necesario escribir los parentesís</span>
+                    <input type="text" class="mx-auto mt-3 d-block" placeholder="ex (1,2,3)" id="input_number">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    let global_list = [];
+    
+    // Function to indentify if the value sent by user is a list
+    var check__if_list = (input) => {
+        len_ = input.length
+        state = input[0] != "(" || input[len_ - 1] != ")" ? false : true
+        if(!state){
+            return false
+        }
+        try{
+            input = input.replace("(","[")
+            input = input.replace(")","]")
+            global_list = JSON.parse(input)
+            return true
+        } catch (error) {
+            return false
+        }
+    }
+
+    alertify.alert(
+        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar tres números para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable tupla de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.',
+        function(){ }
+    );
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 6
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+
+            if (init_pass == 2){
+                num_trans = $('#input_number').val()
+                let state = check__if_list(num_trans);
+                if(!state){
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+                $('#input_number').val("")
+                if(init_pass == 2){
+                    $('#input').toggle('explode')  
+                }
+            }
+
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            let less = global_list[0];
+            less = global_list[1] < less ? global_list[1] : less
+            less = global_list[2] < less ? global_list[2] : less
+            return less
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = "val suma = " + show_result() + " : int"
+            $('#resulttag').html(result)
+        })
+    })
+</script>
+{% endblock scripts %}

@@ -225,7 +225,92 @@
                     <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
                 </div>
             </div>
-            <section class="row mx-auto max-90 desactivate" id="section5">
+            <div class="row mx-auto desactivate" id="section5">
+                <h3 class="fw-bolder">4.5 Funciones con más de un parámetro</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Podemos definir funciones que tienen cualquier número de parámetros. Normalmente colocamos paréntesis alrededor de la lista de <span class="font-bold">parámetros</span> o <span class="font-bold">argumentos</span>. 
+                        El efecto es para combinar la lista de argumentos dentro una <span class="font-bold">tupla</span>, la cual formalmente es un argumento simple pero el cual podría se podría tratar como si hubieran diversos argumentos. 
+                        A continuación se muestra otro ejemplo de una función, este retorna el mayor de 3 números reales. Muy similar a uno de los ejemplos de las secciones anteriores, pero esta vez aplicando funciones.
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  fun max3(a:real,b,c) = 
+    if a > b then
+        if a > c then a
+        else c 
+    else 
+        if b>c then b 
+        else c;
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn6">
+                        <code style="height: 60px;" class="language-vb">  val max3 = fn : real * real * real -> real
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn6" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        <ul>
+                            <li>Nótese que el tipo de la función es una función que toma 3 números <span class="font-bold">reales</span> como argumento y produce un <span class="font-bold">real</span>. 
+                                Ese tipo es mostrado en la respuesta como <span class="font-bold">real * real * real* -> real</span>
+                            </li>
+                            <li>
+                                Si no se hubiese especificado el tipo para cualquiera de los argumentos que recibe la función, ML asumirá que los <span class="font-bold">argumentos</span> y el <span class="font-bold">resultado</span> de la función serían de tipo <span class="font-red-bold">integer</span>
+                            </li>
+                            <li>
+                                Una de las ventajas que tiene ML, es que se puede definir una variable cuyo tipo es de la propiedad producto de tipo y puede dicha variable ser pasada como parámetro a la función <span class="font-red-bold">max3</span>, por ejemplo:
+                            </li>
+                        </ul>
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  val t = (1.0,2.0,3.0);
+  max3(t);  
+                        </code>
+                    </pre>
+                    <p>
+                        Es correcto hacer esto y da como resultado el valor <span class="font-bold">3.0</span>
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="5">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section5">
+                <h3 class="fw-bolder">4.6 Funciones que hacen referencias variables externas</h3>
+                <div class="col-lg-8 py-3">
+                    <p>
+                        Las funciones ilustradas hasta ahora solamente son variables que son pasadas por parámetros pero, 
+                        ¿qué pasa si deseamos usar variables que estén fuera del contexto de una función?. 
+                        Supongamos que antes de definir una función se ha declarado una variable <span class="font-bold">x</span> con un valor determinado, 
+                        luego se define la función la cual dentro de su cuerpo va a utilizar dicha variable <span class="font-bold">x</span> declarada anteriormente. 
+                        Después de haber definido la función vamos actualizar la variable <span class="font-bold">x</span> a otro valor, entonces dado caso más adelante en 
+                        nuestro programa hiciéramos el llamado a la función que creamos, esta trabajaría con el valor de la variable <span class="font-bold">x</span> que anteriormente habíamos 
+                        definido y no el valor actualizado. Para entender un poco mejor veámoslo con un ejemplo.
+                    </p>
+                    <pre>
+                        <code style="height: 60px;" class="language-vb">  val x = 3;
+  fun addx(a) = a + x;
+  val x = 10;
+  addx(2);
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn8">
+                        <code style="height: 60px;" class="language-vb">  val it = 5 : int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn8" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        En la primera línea se define la variable <span class="font-bold">x</span> con un valor de 3, luego se declara la función <span class="font-red-bold">addx</span> la cual recibe como parámetro una variable a y está variable se suma con el valor de la variable <span class="font-bold">x</span>, 
+                        despues actualizamos el valor de la variable <span class="font-bold">x</span> a 10, y se hace el llamado a la función <span class="font-red-bold">addx</span> pasando como parámetro en número entero 2, se ve como el resultado de la función es 5, esto es porque el valor o definición de <span class="font-bold">x</span> 
+                        cambia, pero el contexto de la función que utiliza la variable <span class="font-bold">x</span> dentro de su cuerpo no cambia.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="5">Siguiente</a>
+                </div>
+            </div>
+            <section class="row mx-auto max-90 desactivate" id="section6">
                 <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
                     <div class="card" style="width: 18rem; display: inline-block;">
                         <div class="card-body">
@@ -233,7 +318,7 @@
                             <p class="card-text text-start" style="height: 180px">
                                 A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
                             </p>
-                            <a href="{% url 'type_consistency:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                            <a href="{% url 'defining_functions:ejemplo1' %}" class="card-link">Vamos a practicar</a>
                         </div>
                     </div>
     
@@ -241,7 +326,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Ejercicios</h5>
                           <p class="card-text text-start" style="height: 180px;">Los ejercicios buscan poder mejorar lo aprendido en este módulo, se le recomienda al estudiante realizar esta sección de ejercicios para poder culminar satisfactoriamente el módulo.</p>
-                          <a href="{% url 'type_consistency:ejercicios' %}" class="card-link">Vamos a practicar</a>
+                          <a href="#" class="card-link">Vamos a practicar</a>
                         </div>
                       </div>
     
@@ -286,13 +371,13 @@
             })
         })
         $('#go_to_practice').on('click', function(e){
-            for(var i = 1; i < 5; i ++){
+            for(var i = 1; i < 6; i ++){
                 target_tag = "#section"+i
                 if(!$(target_tag).hasClass('desactivate')){
                     $(target_tag).addClass('desactivate')
                 }
             }
-            $('#section5').removeClass('desactivate')
+            $('#section6').removeClass('desactivate')
             $('#go_to_practice').toggle('explode')
         })
     })

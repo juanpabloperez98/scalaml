@@ -21,7 +21,21 @@ val four_first = ord(hd(tl(tl(tl(convert_word)))));
 val suma = firts_element + second_first + third_first + four_first; *)
 
 (* EJEMPLO3 SECCION 3 *)
-val tupla1 = (4,2.0,#"A");
+(* val tupla1 = (4,2.0,#"A");
 val tupla2 = (8,"Hola mundo",#"B");
 val tupla3 = (20,true,#"C");
-val resultado = #3(tupla1) + #
+val resultado = #3(tupla1) + # *)
+
+(* EJEMPLO1 SECCION4 *)
+(* val num = 3;
+fun cube(x:int) = x*x*x;
+cube(num); *)
+
+
+(* EJEMPLO2 SECCION4 *)
+val tupla = (1,2,3);
+fun lesser_to_numbers(x,y) = 
+    if x < y then x else y;
+fun lesser(x,y,z) = 
+    lesser_to_numbers(lesser_to_numbers(x,y),z);
+lesser(tupla);

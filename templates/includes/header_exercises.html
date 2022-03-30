@@ -30,6 +30,12 @@
                             Volver
                         </a>
                     {% endif %}
+                    {% if page and page == 4 %}
+                        <a class="nav-link" href="{% url 'defining_functions:main' %}">
+                            <img src="{% static 'images/iconos/return.png' %}" alt="">
+                            Volver
+                        </a>
+                    {% endif %}
                         
                 </li>
             </ul>
