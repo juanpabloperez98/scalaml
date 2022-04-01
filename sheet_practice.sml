@@ -33,9 +33,28 @@ cube(num); *)
 
 
 (* EJEMPLO2 SECCION4 *)
-val tupla = (1,2,3);
+(* val tupla = (1,2,3);
 fun lesser_to_numbers(x,y) = 
     if x < y then x else y;
 fun lesser(x,y,z) = 
     lesser_to_numbers(lesser_to_numbers(x,y),z);
-lesser(tupla);
+lesser(tupla); *)
+
+
+(* EJEMPLO3 SECCION4 *)
+(* val lista = [1,2,3];
+fun reverse xs =
+    hd(tl(tl(xs))) :: hd(tl(xs)) :: hd(xs) :: nil;
+reverse(lista); *)
+
+(* EJEMPLO4 SECCION4 *)
+(* val precio1 = 20000.0;
+val precio2 = 40000.0;
+val precio3 = 60000.0;
+fun app_iva(x:real) =
+    x + x * 0.19;
+app_iva(precio1);
+app_iva(precio2);
+app_iva(precio3); *)
+
+

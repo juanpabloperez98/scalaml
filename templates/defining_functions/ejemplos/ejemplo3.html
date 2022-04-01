@@ -7,7 +7,7 @@
 
 
 {% block content %}
-    {% include 'expressions/ejemplos/sidebar.html' %}
+    {% include 'defining_functions/ejemplos/sidebar.html' %}
     <main style="padding: 100px 30px;">
         <div class="row mx-auto">
             <div class="col-lg-3" style="content: '';">
@@ -15,43 +15,43 @@
             <div class="col-lg-8">
                 <h3>Ejemplo 3</h3>
                 <p>
-                    Realice una función que recibe una tupla como parámetro y devuelva el número menor de los elementos de dicha tupla
+                    Construir una función que reciba una lista y retorna el reverso de la lista (longitud de 3)
                 </p>
             </div>
             <div class="col-lg-3" style="content: '';">
             </div>
             <div class="col-lg-4">
                 <pre id="explain_code">
-                    <code class="language-vb">    <span id="pass1">val n1 = 6;</span>
-    <span id="pass2" data-index="2">val n2 = 9;</span>
-    <span id="pass3" data-index="3">val n3 = 5;</span>
-    <span id="pass4" data-index="4">val mayor = n1;</span>
-    <span id="pass5" data-index="5">val mayor = </span>
-    <span id="pass6" data-index="6">    if mayor < n2 then n2 else mayor;</span>
-    <span id="pass7" data-index="7">val mayor =</span>
-    <span id="pass8" data-index="8">    if mayor < n3 then n3 else mayor;</span>
-    <span id="pass9" data-index="9">mayor;</span>
-                    </code>
-                </pre>
+                    <code class="language-vb">    <span id="pass1">val lista = lista_ingresada;</span>
+    <span id="pass2" data-index="2">fun reverse xs =</span>
+    <span id="pass3" data-index="3">    hd(tl(tl(xs))) :: hd(tl(xs)) :: hd(xs) :: nil;</span>
+    <span id="pass4" data-index="4">reverse(lista);</span>
+                </code>
+            </pre>
                 
                 <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
                 <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
                 <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
             </div>
-            <div id="explain" class="col-lg-4 desactivate">
-                <pre id="explain_code_2">
-                    <code class="language-vb"> <span id="code_1"></span>
- <span id="code_2" class="desactivate"></span>                        
- <span id="code_3" class="desactivate"></span>                        
- <span id="code_4" class="desactivate"></span>                        
- <span id="code_5" class="desactivate"></span>                        
- <span id="code_6" class="desactivate"></span>               
-                    </code>
-                </pre>
-                <pre id="result_code" class="desactivate">
-                    <code class="language-vb">  val it = 9 : int
-                    </code>
-                </pre>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">Se crea una variable llamada lista y se igual al valor ingresado por el usuario</span>
+  <span id="code_2" class="desactivate">Luego se define la función reverse la cual recibe como parámetro una variable xs (Esta variable va a representar la lista que se va a pasar por parámetro)</span>                        
+  <span id="code_3" class="desactivate">Luego dentro del cuerpo de la función se obtiene el último elemento de la lista, y se concatena con el elemento medio de la lista y por último se concatena con el primer elemento de la lista (En otras palabras se altera el orden de la lista)</span>
+  <span id="code_4" class="desactivate">Al final se llama a la función reverse pasándole como parámetro la variable lista)</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <h3>Ingrese lista</h3>
+                    <span style="font-size: 10px;">Nota para ingresar una lista es necesario escribir los corchetes</span>
+                    <input type="text" class="mx-auto mt-3 d-block" placeholder="ex [1,2,3]" id="input_number">
+                </div>
             </div>
         </div>
     </main>
@@ -61,15 +61,38 @@
 {% block scripts %}
 
 <script>
+    alertify.alert(
+        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar una lista para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina las variable lista de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+        function(){ }
+    );
+
+    let global_list = [];
+    
+    // Function to indentify if the value sent by user is a list
+    var check__if_list = (input) => {
+        len_ = input.length
+        state = input[0] != "[" || input[len_ - 1] != "]" ? false : true
+        if(!state){
+            return false
+        }
+        try{
+            global_list = JSON.parse(input)
+            return true
+        } catch (error) {
+            return false
+        }
+    }
+
     $(document).ready(function () {
         init_pass = 1
-        init_max = 9
+        init_max = 4
+        values = [] 
 
         $('#pass').on('click',(e)=>{
             e.preventDefault()
             $('#pass').toggle('explode')
             $('#next').toggle('explode')
-            $('#explain').toggle('explode')
+            $('#container_together').toggle('explode')
             $('#pass1').addClass('color_pass')
         })
 
@@ -80,25 +103,45 @@
             id_explain_current = "#code_"+init_pass
             id_explain_next = "#code_"+(init_pass+1)
             init_pass+=1
-            // console.log(init_pass);
+            state_to_next = true
+
+            if (init_pass == 2){
+                num_trans = $('#input_number').val()
+                let state = check__if_list(num_trans);
+                if(!state){
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+                $('#input_number').val("")
+                if(init_pass == 2){
+                    $('#input').toggle('explode')  
+                }
+            }
             if (init_pass == init_max){
                 $("#result").toggle('')
                 $("#next").toggle('')   
             }
-            console.log(id_current);
-            console.log(id_next);
-            $(id_next).addClass("color_pass")
-            $(id_current).removeClass("color_pass")
-
-            $(id_explain_current).toggle('')
-            $(id_explain_next).toggle('')
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
         })
 
+        var show_result = () => {
+            return [global_list[2],global_list[1],global_list[0]]
+        }
+ 
         $('#result').on('click',(e) => {
             e.preventDefault()
             $('#result').toggle('')
             $('#explain_code_2').toggle('')
             $('#result_code').toggle('')
+            result = "val it = [" + show_result() + "] : int list"
+            $('#resulttag').html(result)
         })
     })
 </script>

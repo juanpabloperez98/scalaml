@@ -19,13 +19,20 @@
                     <a href="{% url 'defining_functions:ejemplo2' %}">Ejemplo 2</a>
                 {% endif %}
             </li>
-            <!-- <li>
+            <li>
                 {% if num_example and num_example == 3 %}
-                    <a href="{% url 'expressions:ejemplo3' %}" style="color: #ff2600;">Ejemplo 3</a>
+                    <a href="{% url 'defining_functions:ejemplo3' %}" style="color: #ff2600;">Ejemplo 3</a>
                 {% else %}
-                    <a href="{% url 'expressions:ejemplo3' %}">Ejemplo 3</a>
+                    <a href="{% url 'defining_functions:ejemplo3' %}">Ejemplo 3</a>
                 {% endif %}
-            </li> -->
+            </li>
+            <li>
+                {% if num_example and num_example == 4 %}
+                    <a href="{% url 'defining_functions:ejemplo4' %}" style="color: #ff2600;">Ejemplo 4</a>
+                {% else %}
+                    <a href="{% url 'defining_functions:ejemplo4' %}">Ejemplo 4</a>
+                {% endif %}
+            </li>
         </ul>
         <!-- Menu item -->
     </div>

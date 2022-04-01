@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'css/ejercicios/ejercicio.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<div class="wrapper">
+    <!-- Top menu -->
+    <div class="sidebar">
+        <!-- Profile -->
+        <ul>
+            <li>
+                <a href="#" id="exercise_tag_1" style="color: #ff2600;">Ejercicio 1</a>
+            </li>
+            <li>
+                <a href="#" class="disabled" id="exercise_tag_2">Ejercicio 2</a>
+            </li>
+            <li>
+                <a href="#" class="disabled" id="exercise_tag_3">Ejercicio 3</a>
+            </li>
+        </ul>
+        <!-- Menu item -->
+    </div>
+</div>
+
+
+<main style="padding: 100px 30px;">
+    <div class="row mx-auto">
+        <div class="col-lg-3" style="content: '';">
+        </div>
+        <div class="col-lg-9" id="exercise1">
+            <h3>Ejercicio 1</h3>
+            <p class="mt-4">
+                Suponga que va a ejecutar la siguiente secuencia de definiciones.
+                <pre id="explain_code">
+                    <code class="language-vb">  val a = 2;
+  fun f(b) = a * b;
+  val b =  3;
+  fun g(a) = a + b;
+                </code>
+            </pre>
+            ¿Cuál es el valor que retornaría de dicha secuencia?
+            </p>
+            <form class="mt-5" id="form1">  
+                <label class="container"> val f = fn : int -> int
+                    <input type="radio" checked="checked" name="exercise1" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container"> val a = 2 : int
+                    <input type="radio" name="exercise1" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container"> val it = 8 : int
+                    <input type="radio" name="exercise1" value="3">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">  val g = fn : int -> int
+                    <input type="radio" name="exercise1" value="4">
+                    <span class="checkmark"></span>
+                </label>
+                <a href="#" id="answer1" class="btn btn-danger d-block w-25 mt-5 mx-auto">Escoger respuesta</a>
+            </form>
+        </div>
+        <div class="col-lg-9 desactivate" id="exercise2">
+            <h3>Ejercicio 2</h3>
+            <p class="mt-4">
+                ¿Una función puede recibir un tipo de dato y retornar otro tipo de dato?
+            </p>
+            <form class="mt-5" id="form2">
+                <label class="container">Verdadero
+                    <input type="radio" checked="checked" name="exercise2" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Falso
+                    <input type="radio" name="exercise2" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <a href="#" id="answer2" class="btn btn-danger d-block w-25 mt-5 mx-auto">Escoger respuesta</a>
+            </form>
+        </div>
+        <div class="col-lg-9 desactivate" id="exercise3">
+            <h3>Ejercicio 3</h3>
+            <p class="mt-4">
+                ¿Las funciones pueden inferir el tipo de dato de los parámetros que recibe y el tipo de dato al valor que van a retornar?
+            </p>
+            <form class="mt-5" id="form2">
+                <label class="container">Verdadero
+                    <input type="radio" checked="checked" name="exercise2" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="container">Falso
+                    <input type="radio" name="exercise2" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <a href="#" id="answer3" class="btn btn-danger d-block w-25 mt-5 mx-auto">Escoger respuesta</a>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    answer1 = 3
+    answer2 = 2
+    answer3 = 2
+    total = 0
+    var a = "{{redirect_url}}";
+    $(document).ready(function () {
+        $('#answer1').on('click', function () {
+            answer = $("input[name='exercise1']:checked").val()
+            if (answer == answer1){
+                total += 1
+            }
+            $('#exercise_tag_2').removeClass('disabled')
+            $('#exercise_tag_1').addClass('disabled')
+            $('#exercise_tag_2').css("color", "#ff2600")
+            $('#exercise1').toggle('explode')
+            $('#exercise2').toggle('explode')
+        })
+        $('#answer2').on('click', function () {
+            answer = $("input[name='exercise2']:checked").val()
+            if (answer == answer2){
+                total += 1
+            }
+            $('#exercise_tag_3').removeClass('disabled')
+            $('#exercise_tag_2').addClass('disabled')
+            $('#exercise_tag_3').css("color", "#ff2600")
+            $('#exercise2').toggle('explode')
+            $('#exercise3').toggle('explode')
+        })
+        $('#answer3').on('click', function () {
+            answer = $("input[name='exercise3']:checked").val()
+            if (answer == answer3){
+                total += 1
+            }
+            console.log(total);
+            msg  = ""
+            if (total > 1){
+                msg += "Felicidades usted ha contestado " + total + "/3 respuestas correctamente"
+            }else{
+                msg += "Usted ha contestado " + total + "/3 respuestas correctamente, le recomendamos repasar el módulo nuevamente"
+            }
+            console.log(
+                typeof(a)
+            );
+            alertify.confirm("Haz terminado el módulo",msg,
+                function () {
+                },
+                function () {
+                    window.location.href=a;
+                }).set('labels',{ok:"Ir al siguiente módulo", cancel:"Volver al módulo"});
+        })
+    })
+</script>
+{% endblock scripts %}
