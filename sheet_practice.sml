@@ -58,3 +58,11 @@ app_iva(precio2);
 app_iva(precio3); *)
 
 
+(* EJEMPLO1 SECCION5 *)
+(* val x = 3
+fun factorial(x) =
+    if x = 1 then
+        1
+    else
+        factorial(x-1)*x;
+factorial(x); *)

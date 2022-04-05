@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'apps.type_consistency',
     'apps.tuples_lists',
     'apps.defining_functions',
+    'apps.recursive_fun',
 ]
 
 MIDDLEWARE = [

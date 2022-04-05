@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/app/general.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+<main>
+
+    <section class="row mx-auto max-90" style="margin-top: 9em;">
+        <div class="col-lg-2 ms-auto">
+            <a href="#" id="go_to_practice">Ir a la practica</a>
+        </div>
+    </section>
+    <section class="row mx-auto max-90" style="margin-top: 1em;">
+        <div class="col-lg-12">
+            <div class="row mx-auto desactivate" id="section1">
+                <h3 class="fw-bolder">5.1 Definiendo funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        <span class="font-bold">Es posible y de hecho a frecuentemente necesario que las funciones en ML sean recursivas, es decir que están definidas en términos de ellas mismas ya sea de manera directa o manera indirecta.</span>
+                        De hecho las funciones recursivas en ML sustituyen lo que en la mayoría de lenguajes de programación se les conoce como los <span class="fotn-bold">ciclos iteradores (while o for)</span> como los que se encuentran en C, Pascal y otros muchos. 
+                        Cuando se escriben funciones recursivas debemos tener cuidado que si la función recibe parámetros, y que los parámetros recibidos por la función recursiva sean menores a comparación del primer parámetro que se envió al momento de llamar por primera vez dicha función. 
+                        Por ejemplo si tenemos una función llamada <spn class="font-red-bold">fun</spn> y recibe como parámetro una variable <span class="font-bold">i</span>, entonces cuando se vuelva a llamar la función de manera recursiva se deberá pasar el argumento <span class="font-red-boold">i - 1</span>, 
+                        de esa manera se garantiza que la función recursiva va a tener un término de finalización y que no se quedará en un ciclo infinito. 
+                        Normalmente una función recursiva consiste de:
+                        <ul>
+                            <li>
+                                Una <span class="font-red-bold">base</span>, donde para argumentos suficientemente pequeños calculamos el resultado sin necesidad de hacer alguna llamada recursiva.
+                            </li>
+                            <li>
+                                Un <span class="font-red-bold">paso inductivo</span>, donde para los argumentos no manejados por la <span class="font-bold">base</span>, haremos el llamado de la función recursiva, una o más veces con argumentos más pequeños (argumentos que se irán disminuyendo)
+                            </li>
+                        </ul>
+                        <br>
+                        En esta sección vamos aprender acerca de escribir <span class="font-red-bold">recursiones simples</span>. 
+                        Vamos a introducirnos a dos extensiones: <span class="font-red-bold">recursividad no lineales</span>, donde la función recursiva se llama a ella misma varias veces, y <span class="font-red-bold">recursividad mutua</span>, 
+                        donde varias funciones son definidas recursivamente en términos de cada una de las otras.
+                        Para entender mejor vamos a realizar el siguiente ejemplo. Vamos a escribir una función llamada <span class="font-bold">reverse(L)</span> que devuelve el reverso de una lista. 
+                        Por ejemplo <span class="font-bold">reverse</span>([1,2,3]) produce la lista <span class="font-red-bold">[3,2,1]</span>.
+                        Nota: Si recuerdas en la sección anterior de funciones hemos hecho el mismo ejemplo. Pues bien ahora veamos cómo se realiza utilizando funciones recursivas.
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        <span class="font-red-bold">BASE</span>: la base es una lista vacía; el reverso de una lista vacía es la misma lista vacía
+                        <br>
+                        <span class="font-red-bold">PASO INDUCTIVO</span>: Suponemos entonces para el <span class="font-bold">paso inductivo</span> que <span class="font-red-bold">L</span> es una lista con al menos 1 elemento. 
+                        Tomamos entonces el primer elemento de <span class="font-red-bold">L</span>  y lo concatenamos con el cuerpo de la lista. Véase el ejemplo.
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  fun reverse(L) = 
+   if L = nil then nil
+   else reverse(tl(L)) @ [hd(L)];
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn1">
+                        <code style="height: 60px;" class="language-vb">  val reverse = fn : 'a list -> 'a list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn1" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        En la línea dos se maneja el caso <span class="font-red-bold">base</span>, el reverso de una lista vacía es la misma lista vacía, este caso base determina a la función cuando parar la recursividad. 
+                        En la línea tres cubre el <span class="font-red-bold">paso inductivo</span>, y podemos apreciar como se hace el llamado recursivo a la función <span class="font-red-bold">reverse</span> pasandole como parametro el cuerpo de la lista inicial y concatenando la cabeza de la lista. 
+                        Es de esta manera que poco a poco cuando se va obteniendo el cuerpo del cuerpo de la lista recursivamente. 
+                        Llega un punto donde la lista va a quedar vacía dando como resultado el paso <span class="font-red-bold">BASE</span>.
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="1">Siguiente</a>
+                </div>
+            </div>
+            <div class="row mx-auto desactivate" id="section2">
+                <h3 class="fw-bolder">5.2 Ejecución de las funciones</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Cada vez que se llama a una función, se evalúan sus argumentos y se crea una adición al entorno que asocia los valores resultantes con los parámetros de la función. 
+                        Este estilo de paso de argumentos se conoce como <span class="font-bold">"call-by-value"</span>. 
+                        Es la misma forma en que se pasan los argumentos a las funciones y procedimientos en C, y la forma en que se manejan 
+                        los parámetros en Pascal.
+                        <br>
+                        Cuando se ejecuta la función, colocamos encima de las antiguas entradas de entorno que vinculan los parámetros de la función a sus valores asociados. 
+                        Si la función es <span class="font-bold">recursiva</span>, se construyen nuevos añadidos sobre los antiguos para cada llamada recursiva.
+                        Cada adición vincula los parámetros de la función a los valores de los argumentos, estas vinculaciones interceptan cualquier referencia a los parámetros, 
+                        distinguiéndose así de las entradas con los mismos identificadores en los niveles inferiores. Cuando una función finaliza y devuelve su valor, 
+                        su adición al entorno desaparece, pero el valor devuelto está disponible para su uso en la expresión que se está evaluando.
+                        <br>
+                        Supongamos que estamos en un entorno que tiene la definición de la función <span class="font-red-bold">reverse</span>. Si llamamos a
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  reverse([1,2,3]);
+                        </code>
+                    </pre>
+                    <p>
+                        Entonces añadimos al entorno una entrada para el parámetro <span class="font-red-bold">L</span> y su valor. Mostramos este primer paso
+                    </p>
+                    <div class="text-center">
+                        <img src="{% static 'images/m4/enviroment_after.png' %}" style="width: 80%;" alt="enviroment">
+                    </div>
+                    <p>
+                        Con este valor de <span class="font-red-bold">L</span> como argumento, la condición de la <span class="font-bold">línea (2)</span> es falsa; es decir, <span class="font-red-bold">L</span> no es nulo. 
+                        Por tanto, debemos evaluar la expresión de la <span class="font-bold">línea (3)</span>, lo que nos obliga a evaluar <span class="font-red-bold">reverse</span>(tl(L)) o <span class="font-red-bold">reverse</span>([2,3]). 
+                        Por lo tanto, establecemos otra llamada a <span class="font-red-bold">reverse</span>, añadiendo al entorno un nuevo enlace para <span class="font-red-bold">L</span> que asocia <span class="font-red-bold">L</span> con el valor [2,3].
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        De manera similar la nueva llamada a <span class="font-red-bold">reverse</span> nos hace hacer otra llamada, con <span class="font-red-bold">L</span> ligado a [3], 
+                        y se establece una adición al entorno con este ligado. 
+                        Nuevamente es necesaria una llamada recursiva a <span class="font-red-bold">reverse</span> y en la cuarta llamada <span class="font-red-bold">L</span> se vincula a <span class="font-bold">nil</span>. 
+                        Las adiciones al entorno para las cuatro llamadas se apilan una encima de la otra como se sugiere a continuación. 
+                        En este punto, el identificador <span class="font-bold">L</span> se refiere a la fijación superior, con valor nulo
+                    </p>
+                    <div class="text-center">
+                        <img src="{% static 'images/m4/additions_enviroment.png' %}" style="width: 80%;" alt="enviroment">
+                    </div>
+                    <p>
+                        Ahora cuando evaluamos el cuerpo de <span class="font-red-bold">reverse</span>, la prueba de las <span class="font-bold">líneas (2)</span> se satisface, porque <span class="font-red-bold">L</span> tiene el valor <span class="font-red-bold">nil</span>. 
+                        El valor <span class="font-red-bold">nil</span> es devuelto y utilizado en lugar de <span class="font-red-bold">reverse</span>(tl(L)) por la llamada de abajo, es decir, por <span class="font-red-bold">reverse</span> ([3]) para producir su propia respuesta en la <span class="font-bold">línea (3)</span>. 
+                        Después de la devolución, la entrada superior para <span class="font-red-bold">L</span> desaparece, exponiendo el valor apropiado de <span class="font-red-bold">L</span> , es decir [3]. 
+                        Cómo <span class="font-bold">hd</span>([3]) es 3, el resultado producido por <span class="font-red-bold">reverse</span>([3]) es la lista vacía concatenada con [3], o simplemente [3]. 
+                        Ahora, la adición al entorno de <span class="font-red-bold">reverse</span>([3]) desaparece, y su resultado es utilizado por la llamada que le sigue: <span class="font-red-bold">reverse</span>([2,3]). 
+                        Eso, a su vez, produce [3,2] como resultado y su adición al entorno desaparece, dejando el entorno que se mostró originalmente en la primera imagen.
+                        <br>
+                        Sin embargo, la llamada correspondiente, <span class="font-red-bold">reverse</span>([1,2,3]), recibe ahora el valor [3,2], devuelto desde arriba para usarlo en lugar de <span class="font-red-bold">reverse</span>(tl(L)) en la <span class="font-bold">línea (3)</span>. 
+                        Así, la llamada original a <span class="font-red-bold">reverse</span> es capaz de producir su valor [3,2,1]. En este punto, todos los enlaces para <span class="font-red-bold">L</span> han desaparecido
+                    </p>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
+                </div>
+            </div> 
+            <div class="row mx-auto" id="section3">
+                <h3 class="fw-bolder">5.3 Recursiones no lineales</h3>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        La forma de recursión ilustrada anteriormente es relativamente sencilla. 
+                        Cada llamada da lugar a una llamada recursiva con un argumento menor, o bien llegamos a los casos <span class="font-bold">base</span> y no hay necesidad de una recursión. 
+                        Ahora examinaremos una función en la que la recursión implica <span class="font-bold">más de una llamada recursiva</span>. 
+                        La función combinaciones de <span class="font-bold">m</span> cosas entre <span class="font-bold">n</span> o <span class="font-bold">"n elige m"</span>, 
+                        normalmente escrita <span class="font-bold">(n/m)</span>, es el número de formas en que podemos elegir un conjunto de <span class="font-bold">m</span> cosas entre <span class="font-bold">n</span> cosas distintas. 
+                        Por ejemplo, dos ases de los cuatro que hay en una baraja pueden elegirse de seis maneras posibles. 
+                        Es decir, podemos elegir primero cualquiera de los cuatro ases y después cualquiera de los tres ases restantes. 
+                        Parecen 12 formas, pero en realidad hemos elegido cada conjunto en dos órdenes diferentes. 
+                        Por ejemplo, los ases de picas y de corazones se pueden elegir pica-corazón o corazón-pala. 
+                        En general <span class="font-bold">(n/m) = n!/((n - m)!m!)</span>, donde <span class="font-red-bold">x!</span> (factorial de x) es el producto de todos los enteros de 1 a x. Por ejemplo
+                    </p>
+                    <div class="text-center">
+                        <img src="{% static 'images/m4/no_linear.png' %}" style="width: 80%;" alt="enviroment">
+                    </div>
+                    <p class="mt-2">
+                        Intuitivamente <span class="font-bold">n!/(n - m)!</span>, que es igual a <span class="font-bold">n x (n - 1) x . . . x (n - m + 1)</span>, es el número de maneras en que podemos seleccionar entre <span class="font-bold">n</span> cosas para la primera elección, 
+                        luego entre las <span class="font-bold">n - 1</span> cosas restantes para la segunda elección, y así sucesivamente para <span class="font-bold">m</span> elecciones. 
+                        Debemos dividir este número entre <span class="font-red-bold">m!</span> porque cada conjunto de <span class="font-bold">m</span> elementos habrá sido seleccionado en <span class="font-red-bold">m!</span> órdenes diferentes. 
+                        También hay una forma recursiva natural de definir <span class="font-bold">(n/m)</span>. 
+                        Aquí están las bases y las reglas de inducción.
+                        <br>
+                        <span class="font-red-bold">BASE</span>: Hay dos partes en la base. Si <span class="font-bold">m = 0</span>, entonces el número de maneras de elegir 0 cosas de n es 1 - no elegir nada. 
+                        Por lo tanto <span class="font-bold">(n/0) = 1</span> para cualquier <span class="font-bold">n >= 0</span>. 
+                        Además, si <span class="font-bold">m = n</span>, entonces hay una manera de elegir todas las n cosas de n - elegirlas todas. por lo tanto, <span class="font-bold">(n/n) = 1</span> para todo <span class="font-bold">n >= 0</span>.
+
+                        <span class="font-red-bold">INDUCCIÓN</span>: Si <span class="font-bold">0 < m < n</span>, entonces <span class="font-bold">(n/m) = (n - 1/m) + (n - 1/m -1)</span>. 
+                        La razón es que si debemos seleccionar <span class="font-bold">m</span> cosas de entre <span class="font-bold">n</span>, podemos:
+
+                        <ol>
+                            <li>Rechazar la primera cosa y luego elegir <span class="font-bold">m</span> cosas de las <span class="font-bold">n - 1</span> restantes o</li>
+                            <li>Seleccionar la primera cosa y luego elegir <span class="font-bold">m - 1</span> cosas de las <span class="font-bold">n - 1</span> restantes</li>
+                        </ol>
+                        Nótese que <span class="font-bold">(n / m)</span> no tiene sentido si <span class="font-bold">m < 0</span> o si <span class="font-bold">m > n</span>, por lo que esta base y la inducción definen enteramente la función.
+                    </p>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Podemos escribir una función <span class="font-red-bold">comb</span>(n,m) que calcule <span class="font-bold">(n/m)</span>. 
+                        El código aparece a continuación. La <span class="font-bold">línea (2)</span> maneja el caso de la base, y la <span class="font-bold">línea (3)</span> implementa el paso inductivo. 
+                        Nótese que el programa no se comportará bien si se viola la suposición sobre <span class="font-bold">n</span> y <span class="font-bold">m</span> en el comentario de la <span class="font-bold">línea (1)</span>. 
+                        Realmente deberíamos comprobar las violaciones, y hay un mecanismo importante, la <span class="font-red-bold">"excepción"</span>, que nos permite hacerlo y seguir adhiriéndose al principio de que las funciones devuelven un valor de un tipo particular invariablemente.
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  fun comb(n,m) = (* asumiendo 0 <= m <= n *)
+    if m = 0 orelse m=n then 1
+    else comb(n-1, m) + comb(n-1,m-1);
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn2">
+                        <code style="height: 60px;" class="language-vb">  val comb = fn : int * int -> int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn2" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-4">
+                        La secuencia de llamadas recursivas iniciada por un solo uso de la función <span class="font-red-bold">comb</span> es bastante compleja. 
+                        Por ejemplo, en la expresión
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  comb(4,2);
+  val it = 6 : int
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn3">
+                        <code style="height: 60px;" class="language-vb">  val it = 6 :int
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn3" class="btn btn-custom-red execute-code">Ejecutar</a>
+                    <p class="mt-3">
+                        La llamada inicial llama primero a <span class="font-red-bold">comb</span>(3,2) y después a <span class="font-red-bold">comb</span>(3,1). 
+                        Sin embargo, antes de la última llamada, <span class="font-red-bold">comb</span>(3,2) llama a <span class="font-red-bold">comb</span>(2,2) y <span class="font-red-bold">comb</span>(2,1) y así sucesivamente.
+                    </p>
+                    <div class="text-center mt-3">
+                        <img src="{% static 'images/m4/recursive_calls.png' %}" style="width: 80%;" alt="enviroment">
+                    </div>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
+                </div>
+            </div>
+
+            <section class="row mx-auto max-90 desactivate" id="section6">
+                <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                            <h5 class="card-title">Ejemplos</h5>
+                            <p class="card-text text-start" style="height: 180px">
+                                A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
+                            </p>
+                            <a href="{% url 'defining_functions:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                    </div>
+    
+                    <div class="card" style="width: 18rem; display: inline-block;">
+                        <div class="card-body">
+                          <h5 class="card-title">Ejercicios</h5>
+                          <p class="card-text text-start" style="height: 180px;">Los ejercicios buscan poder mejorar lo aprendido en este módulo, se le recomienda al estudiante realizar esta sección de ejercicios para poder culminar satisfactoriamente el módulo.</p>
+                          <a href="{% url 'defining_functions:ejercicios' %}" class="card-link">Vamos a practicar</a>
+                        </div>
+                      </div>
+    
+                </div>
+                <div class="col-lg-12 col-12 text-center" style="margin: 3em 0em;">
+                    <a href="#" class="btn btn-danger next">
+                        Ir al módulo 5
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'Antes de empezar a mencionar sobre ML, es recomendable leer el manual de usuario para poder instalar ML en su computador y de esa manera poder llevar a cabo los ejemplos y ejercicios que se desarrollen en los módulos', 
+    //     function(){ }
+    // );
+    let section = 1;
+    $(document).ready(function(){
+        $(".execute-code").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btncode = "#code"+$(this).attr('data-btn')
+                $(btncode).toggle("explode")
+                $(this).toggle("explode")
+            })
+        })
+        $(".next-btn").each(function(){
+            $(this).on('click',function(e){
+                e.preventDefault()
+                btn_current_section = parseInt($(this).attr('data-next'))
+                next_section = "#section"+(btn_current_section + 1);
+                current_section = "#section"+btn_current_section;
+                console.log(next_section);
+                console.log(current_section);
+                $(current_section).addClass("desactivate")
+                $(next_section).removeClass("desactivate")
+            })
+        })
+        $('#go_to_practice').on('click', function(e){
+            for(var i = 1; i < 6; i ++){
+                target_tag = "#section"+i
+                if(!$(target_tag).hasClass('desactivate')){
+                    $(target_tag).addClass('desactivate')
+                }
+            }
+            $('#section6').removeClass('desactivate')
+            $('#go_to_practice').toggle('explode')
+        })
+    })
+</script>
+{% endblock scripts %}
