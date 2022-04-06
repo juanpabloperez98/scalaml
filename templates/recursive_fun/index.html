@@ -17,7 +17,7 @@
     </section>
     <section class="row mx-auto max-90" style="margin-top: 1em;">
         <div class="col-lg-12">
-            <div class="row mx-auto desactivate" id="section1">
+            <div class="row mx-auto" id="section1">
                 <h3 class="fw-bolder">5.1 Definiendo funciones</h3>
                 <div class="col-lg-6 py-3">
                     <p>
@@ -133,7 +133,7 @@
                     <a href="#" class="btn btn-custom-red next-btn" data-next="2">Siguiente</a>
                 </div>
             </div> 
-            <div class="row mx-auto" id="section3">
+            <div class="row mx-auto desactivate" id="section3">
                 <h3 class="fw-bolder">5.3 Recursiones no lineales</h3>
                 <div class="col-lg-6 py-3">
                     <p>
@@ -216,7 +216,98 @@
                     <a href="#" class="btn btn-custom-red next-btn" data-next="3">Siguiente</a>
                 </div>
             </div>
+            <div class="row mx-auto desactivate" id="section4">
+                <h3 class="fw-bolder">5.4 Recursiones no lineales</h3>
+                <div class="col-lg-6 py-3">
+                    <p> 
+                        De vez en cuando se necesitará escribir 2 o más funciones que son <span class="font-bold">mutuamente recursivas</span>,lo que significa que cada una llama al menos a otra función del grupo. 
+                        Algunos lenguajes como <span class="font-bold">pascal</span> o <span class="font-bold">C</span> ponen algunos obstáculos en la forma de escribir estas funciones, pero ML tiene mecanismos sencillos para implementarlas. 
+                        Supongamos que queremos escribir una función que toma una lista <span class="font-red-bold">L</span> como argumento y retorna una lista consistente de elementos alternados. 
+                        Hay dos versiones naturales de esta función. Una, la cual llamaremos <span class="font-red-bold">take</span>(L), toma el primer elemento de L y los elementos alternativos posteriores. 
+                        La otra función, la cual llamamos <span class="font-red-bold">skip</span>(L), se salta el primer elemento y toma los elementos alternativos posteriores. 
+                        Esto es conveniente para definir esas dos funciones en términos de las otras.
+                        <ul>
+                            <li>
+                                <span class="font-red-bold">BASIS</span>: If <span class="font-bold">L</span> está vacía, ambos funciones retornan la lista vacía
+                            </li>
+                            <li>
+                                <span class="font-red-bold">INDUCTION</span>: Si <span class="font-bold">L</span> no esta vacía, la función <span class="font-red-bold">take</span> retornara la cabeza de la lista <span class="font-red-bold">L</span> seguido por el resultado de aplicar la función <span class="font-red-bold">skip</span> para el cuerpo de L. Por otro lado, <span class="font-red-bold">skip</span> retorna el resultado de aplicar take para la cola de <span class="font-red-bold">L</span>. 
+                                A continuación mostramos un intento fallido de definir las funciones <span class="font-red-bold">take</span> y <span class="font-red-bold">skip</span>. En la tercera línea de la función <span class="font-red-bold">take</span> tratamos de usar un llamado a la función skip que no está definida aunque se esté tratando de definir más abajo ML responde con un mensaje de error. 
+                                Definiendo <span class="font-red-bold">skip</span> primero nos causaría un error similar debido a que en esta función se hace el llamado a la función <span class="font-red-bold">take</span>.
+                            </li>
+                        </ul>
+                    </p>
 
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  fun take(L) = 
+  if L = nil then nil
+  else hd(L)::skip(tl(L));
+
+  fun skip(L) = 
+    if L = nil then nil
+    else take(tl(L))
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn4">
+                        <code style="height: 60px;" class="language-vb">  Error : unbound variable or constructor: skip
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn4" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-6 py-3">
+                    <p>
+                        Podemos hacer que ML espere hasta que ambas funciones tanto <span class="font-red-bold">take</span> como <span class="font-red-bold">skip</span> antes de tratar de interpretar variables usando la palabra reservada and entre las definiciones de las funciones. 
+                        La forma general para definir n múltiples funciones recursivas es mostrada a continuación, Ahí vemos las n definiciones conectadas por y's. 
+                        Hay un uso de <span class="font-red-bold">fun</span> al principio y un uso de <span class="font-red-bold">semicolom</span>, al final
+                        <ul>
+                            <li>
+                                No confundir <span class="font-bold">and</span> el cual es usado para recursiones múltiples, con el operador lógico <span class="font-bold">and</span>
+                            </li>
+                            <li>
+                                No es necesario usar el constructor and si no es una recursión mutua. Si definimos <span class="font-bold">f1,f2,f . . . , fn</span> y, para cada <span class="font-red-bold">i</span>, en la definición de <span class="font-red-bold">Fi</span> usamos solamente funciones que aparecen más cerca a la lista, que es 
+                                <span class="font-bold">f1,f2,, , ,, fi i - 1</span> entonces <span class="font-bold">no hay recursión mutua</span>.
+                            </li>
+                        </ul>
+                        La correcta definición de las funciones <span class="font-red-bold">take</span> y <span class="font-red-bold">skip</span>:
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  fun
+    < definicion primera funcion >
+  and
+    < definicion segunda funcion >
+  and
+
+  and
+    < definicion nth funcion >
+                        </code>
+                    </pre>
+                    <p>
+                        Hasta que se hayan visto las dos funciones. 
+                        Ambas se identifican como funciones de listas a listas. 
+                        Los elementos de las listas de entrada y salida de ambas funciones deben ser de un tipo 'a, pero ML no puede identificar el tipo.
+                    </p>
+                    <pre>
+                        <code style="height: 80px;" class="language-vb">  fun
+    take(L) = 
+        if L = nil then nil 
+        else hd(L) :: skip(tl(L))
+and
+    skip(L) = 
+        if L = nil then nil
+        else take(tl(L));
+                        </code>
+                    </pre>
+                    <pre class="desactivate" style="margin-top: -80px;" id="codebtn5">
+                        <code style="height: 60px;" class="language-vb">  val take = fn : 'a list -> 'a list
+   val skip = fn : 'a list -> 'a list
+                        </code>
+                    </pre>
+                    <a href="#" data-btn="btn5" class="btn btn-custom-red execute-code">Ejecutar</a>
+                </div>
+                <div class="col-lg-12 my-5 text-center">
+                    <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
+                </div>
+            </div>
             <section class="row mx-auto max-90 desactivate" id="section6">
                 <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
                     <div class="card" style="width: 18rem; display: inline-block;">
