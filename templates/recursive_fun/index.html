@@ -217,7 +217,7 @@
                 </div>
             </div>
             <div class="row mx-auto desactivate" id="section4">
-                <h3 class="fw-bolder">5.4 Recursiones no lineales</h3>
+                <h3 class="fw-bolder">5.4 Recursiones mutual</h3>
                 <div class="col-lg-6 py-3">
                     <p> 
                         De vez en cuando se necesitará escribir 2 o más funciones que son <span class="font-bold">mutuamente recursivas</span>,lo que significa que cada una llama al menos a otra función del grupo. 
@@ -308,7 +308,7 @@ and
                     <a href="#" class="btn btn-custom-red next-btn" data-next="4">Siguiente</a>
                 </div>
             </div>
-            <section class="row mx-auto max-90 desactivate" id="section6">
+            <section class="row mx-auto max-90 desactivate" id="section5">
                 <div class="col-lg-12 col-12" style="margin-top: 2em;text-align: center;">
                     <div class="card" style="width: 18rem; display: inline-block;">
                         <div class="card-body">
@@ -316,7 +316,7 @@ and
                             <p class="card-text text-start" style="height: 180px">
                                 A continuación, se presentarán una serie de ejemplos los cuales contendrán sus enunciados y un paso a paso el cual permitirá al estudiante tener una comprensión más detallada de los temas tratados en este módulo
                             </p>
-                            <a href="{% url 'defining_functions:ejemplo1' %}" class="card-link">Vamos a practicar</a>
+                            <a href="{% url 'recursive_fun:ejemplo1' %}" class="card-link">Vamos a practicar</a>
                         </div>
                     </div>
     
@@ -369,13 +369,13 @@ and
             })
         })
         $('#go_to_practice').on('click', function(e){
-            for(var i = 1; i < 6; i ++){
+            for(var i = 1; i < 5; i ++){
                 target_tag = "#section"+i
                 if(!$(target_tag).hasClass('desactivate')){
                     $(target_tag).addClass('desactivate')
                 }
             }
-            $('#section6').removeClass('desactivate')
+            $('#section5').removeClass('desactivate')
             $('#go_to_practice').toggle('explode')
         })
     })
