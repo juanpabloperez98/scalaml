@@ -36,6 +36,12 @@
                             Volver
                         </a>
                     {% endif %}
+                    {% if page and page == 5 %}
+                        <a class="nav-link" href="{% url 'recursive_fun:main' %}">
+                            <img src="{% static 'images/iconos/return.png' %}" alt="">
+                            Volver
+                        </a>
+                    {% endif %}
                         
                 </li>
             </ul>

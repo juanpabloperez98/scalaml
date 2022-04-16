@@ -22,13 +22,13 @@
             </div>
             <div class="col-lg-4">
                 <pre id="explain_code">
-                    <code class="language-vb">    <span id="pass1">val n = valor_ingresado;</span>
+                    <code class="language-vb">    <span id="pass1">val x = valor_ingresado;</span>
     <span id="pass2" data-index="2">fun factorial(x) =</span>
     <span id="pass3" data-index="3">    if x = 1 then</span>
-    <span id="pass3" data-index="4">        1</span>
-    <span id="pass3" data-index="5">    else</span>
-    <span id="pass3" data-index="6">        factorial(x-1)*x;</span>
-    <span id="pass3" data-index="7">factorial(n);</span>
+    <span id="pass4" data-index="4">        1</span>
+    <span id="pass5" data-index="5">    else</span>
+    <span id="pass6" data-index="6">        factorial(x-1)*x;</span>
+    <span id="pass7" data-index="7">factorial(x);</span>
                 </code>
             </pre>
                 
@@ -39,13 +39,13 @@
             <div class="col-5 mx-auto desactivate" id="container_together">
                 <div id="explain" class="col-lg-12">
                     <pre id="explain_code_2">
-                        <code class="language-vb"> <span id="code_1">Se define la primera variable con el nombre v1</span>
- <span id="code_2" class="desactivate">Se define la primera variable con el nombre v2</span>                        
- <span id="code_3" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
- <span id="code_4" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
- <span id="code_5" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
- <span id="code_6" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
- <span id="code_7" class="desactivate">Se utiliza la función trunc pasándole como argumento la variable v1 y se le suma el valor de aplicar la función ceil pasandole como parametro la variable v2</span>
+                        <code class="language-vb"> <span id="code_1">Se define la variable x y es igualada al valor ingresado por el usuario</span>
+ <span id="code_2" class="desactivate">Luego se declara la función factorial que recibe como parámetro una variable x</span>                        
+ <span id="code_3" class="desactivate">Dentro de la función se valida la base (recordar que la base es el condicional que determina cuándo ha finalizado la recursión), donde se valida que la variable x sea igual a 1</span>
+ <span id="code_4" class="desactivate">Si x es igual a 1 entonces la función retorna 1</span>
+ <span id="code_5" class="desactivate">De lo contrario si x no es igual a 1</span>
+ <span id="code_6" class="desactivate">Se volverá hacer el llamado a la función factorial pero pasándole como parámetro ahora la variable x - 1</span>
+ <span id="code_7" class="desactivate">Se hace el llamado a la función factorial declarada anteriormente, pasándole como parámetro la variable x.</span>
                         </code>
                     </pre>
                     <pre id="result_code" class="desactivate">
@@ -66,14 +66,14 @@
 {% block scripts %}
 
 <script>
-    alertify.alert(
-        'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar un número para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable n de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
-        function(){ }
-    );
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar un número para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable n de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+    //     function(){ }
+    // );
     $(document).ready(function () {
         init_pass = 1
         init_max = 7
-        values = [] 
+        num = 0
 
         $('#pass').on('click',(e)=>{
             e.preventDefault()
@@ -97,10 +97,11 @@
                 if(!isNaN(
                     num_trans
                 )){
-                    values.push(num_trans)
+                    num = num_trans
                     $('#input_number').val('')
                     if(init_pass == 2){
                         $('#input').toggle('explode')
+                        $('#container_value_i').toggle('explode')
                     }
                 }else{
                     init_pass--;
@@ -122,9 +123,11 @@
         })
 
         var show_result = () => {
-            v1 = Math.ceil(values[0])
-            v2 = Math.trunc(values[1])
-            return v1 + v2
+            var acum = 1
+            for(let i = num; i>0 ; i--){
+                acum *= i
+            }
+            return acum
         }
  
         $('#result').on('click',(e) => {
@@ -132,7 +135,7 @@
             $('#result').toggle('')
             $('#explain_code_2').toggle('')
             $('#result_code').toggle('')
-            result = "val resultado = " + show_result()
+            result = "val it = " + show_result()
             $('#resulttag').html(result)
         })
     })

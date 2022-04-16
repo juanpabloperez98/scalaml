@@ -58,7 +58,8 @@ app_iva(precio2);
 app_iva(precio3); *)
 
 
-(* EJEMPLO1 SECCION5 *)
+(* EJEMPLO1 SECCION 5 *)
+(* Escribir una función recursiva que calcule el factorial de un número n donde n >= 1 y da como resultado el producto de todos los enteros comprendidos entre 1 y n. *)
 val x = 3
 fun factorial(x) =
     if x = 1 then
