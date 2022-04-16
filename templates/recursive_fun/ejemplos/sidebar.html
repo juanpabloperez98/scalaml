@@ -12,6 +12,15 @@
                 {% endif %}
                     
             </li>
+            <li>
+                
+                {% if num_example and num_example == 2 %}
+                    <a href="{% url 'recursive_fun:ejemplo2' %}" style="color: #ff2600;">Ejemplo 2</a>
+                {% else %}
+                    <a href="{% url 'recursive_fun:ejemplo2' %}">Ejemplo 2</a>
+                {% endif %}
+                    
+            </li>
         </ul>
         <!-- Menu item -->
     </div>

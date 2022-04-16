@@ -60,10 +60,19 @@ app_iva(precio3); *)
 
 (* EJEMPLO1 SECCION 5 *)
 (* Escribir una función recursiva que calcule el factorial de un número n donde n >= 1 y da como resultado el producto de todos los enteros comprendidos entre 1 y n. *)
-val x = 3
+(* val x = 3
 fun factorial(x) =
     if x = 1 then
         1
     else
         factorial(x-1)*x;
-factorial(x);
+factorial(x); *)
+
+(* EJEMPLO2 SECCION 5 *)
+(* Utilizando una función recursiva, se pide que se le pida al usuario un número entero y muestre como resultado una lista con los valores del 1 al 10 multiplicados por el número n ingresado por el usuario *)
+(* val x = 3
+val list = [1,2,3,4,5,6,7,8,9,10]
+fun multp(y) = 
+    if y = nil then nil
+    else [hd(y)*x] @ multp(tl(y));
+multp(list); *)
