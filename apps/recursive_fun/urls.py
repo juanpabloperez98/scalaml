@@ -8,4 +8,5 @@ urlpatterns = [
     path('recursive_fun', recursive_fun.as_view(), name = 'main'),
     path('recursive_fun/ejemplo1', ejemplo1.as_view(), name = 'ejemplo1'),
     path('recursive_fun/ejemplo2', ejemplo2.as_view(), name = 'ejemplo2'),
+    path('recursive_fun/ejemplo3', ejemplo3.as_view(), name = 'ejemplo3'),
 ]

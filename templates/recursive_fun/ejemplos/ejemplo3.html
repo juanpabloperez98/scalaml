@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/ejemplos/sidebar.css' %}">
+{% endblock styles %}
+
+
+{% block content %}
+    {% include 'recursive_fun/ejemplos/sidebar.html' %}
+    <main style="padding: 100px 30px;">
+        <div class="row mx-auto">
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-8">
+                <h3>Ejemplo 3</h3>
+                <p>
+                    Duplicar los elementos de una lista, por ejemplo, si la lista obtenida es [a1,a2,a3,...an] entonces retornara [a1,a1,a2,a2,a3,a3,..,an,an]
+                </p>
+            </div>
+            <div class="col-lg-3" style="content: '';">
+            </div>
+            <div class="col-lg-4">
+                <pre id="explain_code">
+                    <code class="language-vb">    <span id="pass1">val x = valor_ingresado</span>
+    <span id="pass2" data-index="2">val list = [1,2,3,4,5,6,7,8,9,10]</span>
+    <span id="pass3" data-index="3">fun multp(y) = </span>
+    <span id="pass4" data-index="4">    if y = nil then nil</span>
+    <span id="pass5" data-index="5">    else [hd(y)*x] @ multp(tl(y));</span>
+    <span id="pass6" data-index="6">multp(list);</span>
+    </code>
+            </pre>
+                
+                <a href="#" id="pass" class="btn btn-danger">Paso a paso</a>
+                <a href="#" id="next" class="btn btn-danger desactivate">Siguiente</a>
+                <a href="#" id="result" class="btn btn-danger desactivate">Ver resultado</a>
+            </div>
+            <div class="col-5 mx-auto desactivate" id="container_together">
+                <div id="explain" class="col-lg-12">
+                    <pre id="explain_code_2">
+                        <code class="language-vb"> <span id="code_1">Se define la variable x, se iguala al valor ingresado por el usuario</span>
+ <span id="code_2" class="desactivate">Luego se declara una lista llamada list, la cual va a tener todos los números del 1 al 10</span>                        
+ <span id="code_3" class="desactivate">Se define ahora la función llamada multp que recibira como parámetro una lista en la variable y</span>
+ <span id="code_4" class="desactivate">Se valida la condición base la cual es, si la lista y es vacía, entonces retorna vacío la función</span>
+ <span id="code_5" class="desactivate">De lo contrario si la condición base no se cumple entonces se obtendrá la cabeza de la lista y que haya en el momento y se multiplica por el valor de la variable x, y a eso se le concatena el llamado recursivo a la función  multp pasandole ahora como parámetro el cuerpo de la lista y</span>
+ <span id="code_6" class="desactivate">Por último se hace el llamado a la función mult, pasando como parámetro el valor de la variable list</span>
+                        </code>
+                    </pre>
+                    <pre id="result_code" class="desactivate">
+                        <code class="language-vb">  <span id="resulttag"></span>
+                        </code>
+                    </pre>
+                </div>
+                <div id="input" class="col-lg-12 text-center">
+                    <h3>Ingrese número</h3>
+                    <input type="text" placeholder="Ingrese un número" id="input_number">
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+
+{% block scripts %}
+
+<script>
+    // alertify.alert(
+    //     'Para tener en cuenta!', 'En este ejemplo para temas dinámicos, se le pide al usuario ingresar un número para poder mostrar el ejemplo, sin embargo, a la hora de realizar el programa en su computador, es necesario que usted defina la variable n de manera estática debido a que aun no se ha explicado acerca de las entradas y salidas en SML. Tema que se va a explicar en un módulo más adelante.', 
+    //     function(){ }
+    // );
+    $(document).ready(function () {
+        init_pass = 1
+        init_max = 6
+        num = 0
+
+        $('#pass').on('click',(e)=>{
+            e.preventDefault()
+            $('#pass').toggle('explode')
+            $('#next').toggle('explode')
+            $('#container_together').toggle('explode')
+            $('#pass1').addClass('color_pass')
+        })
+
+        $('#next').on('click',(e) => {
+            e.preventDefault()
+            id_current = '#pass'+init_pass
+            id_next = '#pass'+(init_pass+1)
+            id_explain_current = "#code_"+init_pass
+            id_explain_next = "#code_"+(init_pass+1)
+            init_pass+=1
+            state_to_next = true
+
+            if (init_pass == 2){
+                num_trans = parseInt($('#input_number').val())
+                if(!isNaN(
+                    num_trans
+                )){
+                    num = num_trans
+                    $('#input_number').val('')
+                    if(init_pass == 2){
+                        $('#input').toggle('explode')
+                    }
+                }else{
+                    init_pass--;
+                    state_to_next = false
+                    alertify.alert("Valor invalido","Ingresa un valor valido", function(){ });
+                }
+            }
+            if (init_pass == init_max){
+                $("#result").toggle('')
+                $("#next").toggle('')   
+            }
+            
+            if(state_to_next){
+                $(id_next).addClass("color_pass")
+                $(id_current).removeClass("color_pass")
+                $(id_explain_current).toggle('')
+                $(id_explain_next).toggle('')
+            }
+        })
+
+        var show_result = () => {
+            str = "["
+            for(let i = 1; i <= 10; i++){
+                i == 10 ? str += (i*num) : str += (i*num) + ",";
+            }
+            str += "] : int list"
+            return str
+        }
+ 
+        $('#result').on('click',(e) => {
+            e.preventDefault()
+            $('#result').toggle('')
+            $('#explain_code_2').toggle('')
+            $('#result_code').toggle('')
+            result = "val it = " + show_result()
+            $('#resulttag').html(result)
+        })
+    })
+</script>
+{% endblock scripts %}

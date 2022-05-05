@@ -76,3 +76,12 @@ fun multp(y) =
     if y = nil then nil
     else [hd(y)*x] @ multp(tl(y));
 multp(list); *)
+
+
+(* EJEMPLO3 SECCION 5 *)
+(* Duplicar los elementos de una lista, por ejemplo, si la lista obtenida es [a1,a2,a3,...an] entonces retornara [a1,a1,a2,a2,a3,a3,..,an,an] *)
+val list = [1,2,3,4]
+fun dup_elements(x) = 
+    if x = nil then nil
+    else [hd(x)] @ [hd(x)] @ dup_elements(tl(x));
+dup_elements(list);
